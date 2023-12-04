@@ -1,0 +1,186 @@
+﻿<Window x:Class="ExamenXAML281123.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamenXAML281123"
+        mc:Ignorable="d" Language="es-ES"
+        Title="Examen XAML - 28/11/2023" Height="800" Width="800">
+    <Window.Resources>
+        <local:Articulos x:Key="Articulos"/>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="CornflowerBlue"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderThickness="3" BorderBrush="{TemplateBinding Foreground}"
+                                CornerRadius="10">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" To="130" Duration="0:0:0.2">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CircleEase/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="130" Duration="0:0:0.2">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CircleEase/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" 
+                                                To="LightBlue" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" To="100" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="100" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" 
+                                                To="White" Duration="0:0:0.4"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="estilo1" TargetType="ListBoxItem">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="Green"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="bordePlantilla"
+                                Padding="4" BorderThickness="3" BorderBrush="Transparent"
+                                Background="LightPink">
+                            <!--<VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal"/>
+                                    <VisualState Name="MouseOver">
+                                        <Storyboard >
+                                            <ThicknessAnimation To="1" Duration="0:0:0.1"
+                                                                Storyboard.TargetProperty="BorderThickness"/>
+                                            <ColorAnimation To="Green" Duration="0:0:0.1"
+                                                        Storyboard.TargetProperty="BorderBrush.(SolidColorBrush.Color)"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup Name="SelectionStates">
+                                    <VisualState Name="Unselected"/>
+                                    <VisualState Name="SelectedUnfocused"/>
+                                    <VisualState Name="Selected">
+                                        <Storyboard>
+                                            <ThicknessAnimation To="5" Duration="0:0:0.1"
+                                                                Storyboard.TargetProperty="BorderThickness"/>
+                                            <ColorAnimation To="LightYellow" Duration="0:0:0.1"
+                                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>-->
+                            <ContentPresenter x:Name="contenido" HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bordePlantilla" Property="Background" Value="Lightblue"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="bordePlantilla" Property="Background" Value="Lightblue"/>
+                                <Setter TargetName="bordePlantilla" Property="BorderBrush" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#region  Botones-->
+        <Grid Grid.Row="1" >
+            <Rectangle Fill="#f1f2f3" RadiusX="50" RadiusY="50" Margin="10"/>
+            <Rectangle Fill="#f1f2f3" VerticalAlignment="Bottom" Height="100" Margin="10">
+            </Rectangle>
+            <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Height="200" >
+                <Button Content="uno"/>
+                <Button Content="dos"/>
+                <Button Content="tres"/>
+                <Button Content="cuatro"/>
+                <Button Content="cinco"/>
+            </StackPanel>
+        </Grid>
+        <!--#endregion-->
+        <!--#region ListaArticulos-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="lbArticulos" Margin="10" 
+                     IsSynchronizedWithCurrentItem="False"
+                     ItemsSource="{StaticResource Articulos}"
+                     DisplayMemberPath="Descripcion" SelectedValuePath="Referencia"
+                     ItemContainerStyle="{StaticResource estilo1}">
+                <ListBox.Background>
+                    <ImageBrush ImageSource="{Binding SelectedItem.Imagen, ElementName=lbArticulos}" 
+                                Opacity="0.5" Stretch="UniformToFill"/>
+                </ListBox.Background>
+            </ListBox>
+            <Grid Grid.Column="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Image Source="{Binding ElementName=lbArticulos,Path=SelectedItem.Imagen}" Stretch="Uniform" />
+                <Rectangle Grid.Row="1" Fill="Gray">
+                    <Rectangle.Style>
+                        <Style TargetType="Rectangle">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=lbArticulos,Path=SelectedIndex}" Value="-1">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Rectangle.Style>
+                </Rectangle>
+                <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="10,5" >
+                    <TextBlock Text="{Binding ElementName=lbArticulos,Path=SelectedItem.Referencia}" 
+                       FontWeight="ExtraBold" Background="Gray" Foreground="White"/>
+                </Viewbox>
+                <Viewbox Grid.Row="2">
+                    <TextBlock  Text="{Binding ElementName=lbArticulos,Path=SelectedItem.Precio,StringFormat={}{0:C0}}" 
+                           FontSize="64"
+                       FontWeight="ExtraBold" Foreground="Crimson" HorizontalAlignment="Center"/>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+        <!--#endregion-->
+    </Grid>
+
+</Window>

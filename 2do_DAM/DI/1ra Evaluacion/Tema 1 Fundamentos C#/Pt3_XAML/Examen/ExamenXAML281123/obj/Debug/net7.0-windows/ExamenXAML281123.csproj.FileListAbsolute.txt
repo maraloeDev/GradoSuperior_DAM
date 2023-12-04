@@ -1,0 +1,26 @@
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\ExamenXAML281123.exe
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\ExamenXAML281123.deps.json
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\ExamenXAML281123.runtimeconfig.json
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\ExamenXAML281123.dll
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\ExamenXAML281123.pdb
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\MainWindow.g.cs
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\App.g.cs
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123_MarkupCompile.cache
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123_MarkupCompile.lref
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\MainWindow.baml
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.g.resources
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.GeneratedMSBuildEditorConfig.editorconfig
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.AssemblyInfoInputs.cache
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.AssemblyInfo.cs
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.csproj.CoreCompileInputs.cache
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.dll
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\refint\ExamenXAML281123.dll
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.pdb
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123.genruntimeconfig.cache
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ref\ExamenXAML281123.dll
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\ExamenXAML281123_Content.g.cs
+G:\sources\ExamenXAML281123\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\Imagenes\intel i7.png
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\Imagenes\Samsung-970-EVO.jpg
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\Imagenes\sdram ddr4.jpg
+G:\sources\ExamenXAML281123\bin\Debug\net7.0-windows\Imagenes\ssd.jpg

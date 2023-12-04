@@ -1,0 +1,42 @@
+G:\sources\WpfAppTriggers\bin\Debug\net6.0-windows\WpfAppTriggers.exe
+G:\sources\WpfAppTriggers\bin\Debug\net6.0-windows\WpfAppTriggers.deps.json
+G:\sources\WpfAppTriggers\bin\Debug\net6.0-windows\WpfAppTriggers.runtimeconfig.json
+G:\sources\WpfAppTriggers\bin\Debug\net6.0-windows\WpfAppTriggers.dll
+G:\sources\WpfAppTriggers\bin\Debug\net6.0-windows\WpfAppTriggers.pdb
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.csproj.AssemblyReference.cache
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\MainWindow.g.cs
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\App.g.cs
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers_MarkupCompile.cache
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers_MarkupCompile.lref
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\MainWindow.baml
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.g.resources
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.GeneratedMSBuildEditorConfig.editorconfig
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.AssemblyInfoInputs.cache
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.AssemblyInfo.cs
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.csproj.CoreCompileInputs.cache
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.dll
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\refint\WpfAppTriggers.dll
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.pdb
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\WpfAppTriggers.genruntimeconfig.cache
+G:\sources\WpfAppTriggers\obj\Debug\net6.0-windows\ref\WpfAppTriggers.dll
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\bin\Debug\net6.0-windows\WpfAppTriggers.exe
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\bin\Debug\net6.0-windows\WpfAppTriggers.deps.json
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\bin\Debug\net6.0-windows\WpfAppTriggers.runtimeconfig.json
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\bin\Debug\net6.0-windows\WpfAppTriggers.dll
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\bin\Debug\net6.0-windows\WpfAppTriggers.pdb
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.csproj.AssemblyReference.cache
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers_MarkupCompile.cache
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers_MarkupCompile.lref
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.g.resources
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.AssemblyInfoInputs.cache
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.AssemblyInfo.cs
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.csproj.CoreCompileInputs.cache
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.dll
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\refint\WpfAppTriggers.dll
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.pdb
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\WpfAppTriggers.genruntimeconfig.cache
+C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\DI\1ra Evaluacion\Tema 1 Fundamentos C#\Pt3_XAML\Ejemplos\WpfAppTriggersPropiedad\WpfAppTriggersPropiedad\obj\Debug\net6.0-windows\ref\WpfAppTriggers.dll

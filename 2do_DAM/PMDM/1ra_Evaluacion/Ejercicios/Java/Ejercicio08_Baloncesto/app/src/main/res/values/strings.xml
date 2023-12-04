@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ejer8_Baloncesto</string>
+    <string name="tantero">Locales: %1d Visitantes: %2d</string>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/spTipoCafe"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:entries="@android:array/emailAddressTypes" />
+
+    <CheckBox
+        android:id="@+id/cbAzucar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_azucar"
+        tools:ignore="VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/bOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on" />
+
+    <TextView
+        android:id="@+id/tvRecaudado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lleva recaudado "
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/bServir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Servir cafe" />
+
+    <TextView
+        android:id="@+id/tvServido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Servido :"
+        android:textSize="20sp" />
+</LinearLayout>

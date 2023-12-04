@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_alertaPersonalizada"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_imagenAlertPersonalizado"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        tools:src="@tools:sample/avatars"
+        android:scaleType="centerCrop"
+        android:layout_weight="0.2"
+        app:layout_constraintTop_toTopOf="@id/cl_alertaPersonalizada"
+        app:layout_constraintEnd_toStartOf="@id/til_nombre"
+        app:layout_constraintStart_toStartOf="@id/cl_alertaPersonalizada"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:hint="Nombre:"
+        app:layout_constraintEnd_toEndOf="@id/cl_alertaPersonalizada"
+        app:layout_constraintTop_toTopOf="@id/cl_alertaPersonalizada"
+        app:layout_constraintStart_toEndOf="@id/iv_imagenAlertPersonalizado"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tit_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/cb_estadoCivil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Soltero"
+        app:layout_constraintStart_toEndOf="@id/iv_imagenAlertPersonalizado"
+        app:layout_constraintTop_toBottomOf="@id/til_nombre"
+         />
+
+    <Spinner
+        android:id="@+id/s_ciudadNacimiento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/ciudades"
+        app:layout_constraintTop_toBottomOf="@id/cb_estadoCivil"
+        app:layout_constraintStart_toStartOf="@id/til_nombre"
+        app:layout_constraintEnd_toEndOf="@id/cl_alertaPersonalizada"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

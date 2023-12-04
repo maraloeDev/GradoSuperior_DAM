@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Corregido</string>
+    <string name="inesrt_name">Inserte Nombre</string>
+    <string name="insert_calification">Inserte Calificación</string>
+    <string name="save">Guardar</string>
+    <plurals name="not_passedCount">
+        <item quantity="one">%d suspenso</item>
+        <item quantity="other">%d suspensos</item>
+    </plurals>
+    <string-array name="califications">
+        <item>Suspenso</item>
+        <item>Aprobado</item>
+        <item>Sobresaliente</item>
+    </string-array>
+</resources>

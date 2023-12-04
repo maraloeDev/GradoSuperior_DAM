@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/lyNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/nombre" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="text"
+            tools:ignore="DuplicateSpeakableTextCheck,LabelFor,VisualLintTextFieldSize" />
+
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/tbOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="ToggleButton" />
+
+    <LinearLayout
+        android:id="@+id/lyEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/edad" />
+
+        <EditText
+            android:id="@+id/etEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Edad"
+            android:inputType="text"
+            tools:ignore="LabelFor,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyCiudad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCiudad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/ciudad" />
+
+        <Spinner
+            android:id="@+id/spCiudades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:entries="@array/spCiudad"
+            android:minHeight="48dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bGrabar"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/grabar" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="BORRAR" />
+
+    <ListView
+        android:id="@+id/lvDatos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

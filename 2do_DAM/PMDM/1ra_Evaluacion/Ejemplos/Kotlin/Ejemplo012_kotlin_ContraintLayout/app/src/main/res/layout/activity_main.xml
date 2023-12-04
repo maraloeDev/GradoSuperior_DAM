@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+            <variable
+                name="usuario"
+                type="com.example.ejem12_kotlin_contraintlayout.Usuario" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_principal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Inserte nombre"
+            app:layout_constraintVertical_bias="0.25"
+            app:layout_constraintBottom_toBottomOf="@id/cl_principal"
+            app:layout_constraintEnd_toEndOf="@id/cl_principal"
+            app:layout_constraintHorizontal_weight="0.6"
+            app:layout_constraintStart_toEndOf="@id/tv_nombre"
+            app:layout_constraintTop_toTopOf="@+id/g_40">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{usuario.nombre}"
+                android:hint="hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Nombre:"
+            app:layout_constraintBottom_toBottomOf="@+id/til_nombre"
+            app:layout_constraintEnd_toStartOf="@id/til_nombre"
+            app:layout_constraintHorizontal_weight="0.4"
+            app:layout_constraintStart_toStartOf="@id/cl_principal"
+            app:layout_constraintTop_toTopOf="@+id/til_nombre" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Inserte password"
+            app:layout_constraintBottom_toTopOf="@+id/b_grabar"
+            app:layout_constraintEnd_toEndOf="@id/cl_principal"
+            app:layout_constraintHorizontal_weight="0.6"
+            app:layout_constraintStart_toEndOf="@id/tv_nombre"
+            app:layout_constraintTop_toBottomOf="@+id/til_nombre">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Passord:"
+            app:layout_constraintBottom_toBottomOf="@+id/til_password"
+            app:layout_constraintEnd_toStartOf="@id/til_nombre"
+            app:layout_constraintHorizontal_weight="0.4"
+            app:layout_constraintStart_toStartOf="@id/cl_principal"
+            app:layout_constraintTop_toTopOf="@+id/til_password" />
+
+
+
+
+
+
+
+
+        <Button
+            android:id="@+id/b_grabar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grabar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g_40"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/g_40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g_40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <Button
+            android:id="@+id/b_boton1"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boton1"
+            app:layout_constraintTop_toBottomOf="@id/g_40"
+            app:layout_constraintStart_toStartOf="@id/cl_principal"
+            app:layout_constraintEnd_toStartOf="@id/b_boton2"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="348dp" />
+
+        <Button
+            android:id="@+id/b_boton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boton 2"
+            app:layout_constraintTop_toBottomOf="@id/g_40"
+            app:layout_constraintStart_toEndOf="@id/b_boton1"
+            app:layout_constraintEnd_toStartOf="@id/b_boton3"
+            tools:layout_editor_absoluteX="156dp"
+            tools:layout_editor_absoluteY="345dp" />
+
+        <Button
+            android:id="@+id/b_boton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boton 3"
+            app:layout_constraintTop_toBottomOf="@id/g_40"
+            app:layout_constraintStart_toEndOf="@id/b_boton2"
+            app:layout_constraintEnd_toEndOf="@id/cl_principal"
+            tools:layout_editor_absoluteX="276dp"
+            tools:layout_editor_absoluteY="339dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

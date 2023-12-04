@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <description></description>
+    <display-name>Ejemplo1_PP</display-name>
+    <servlet-name>Ejemplo1_PP</servlet-name>
+    <servlet-class>Ejemplos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ejemplo1_PP</servlet-name>
+    <url-pattern>/Ejemplo1_PP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Ejemplo2_PP</display-name>
+    <servlet-name>Ejemplo2_PP</servlet-name>
+    <servlet-class>Ejemplos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ejemplo2_PP</servlet-name>
+    <url-pattern>/Ejemplo2_PP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Ejemplo3_PP</display-name>
+    <servlet-name>Ejemplo3_PP</servlet-name>
+    <servlet-class>Ejemplos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ejemplo3_PP</servlet-name>
+    <url-pattern>/Ejemplo3_PP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Ejemplo4_PP</display-name>
+    <servlet-name>Ejemplo4_PP</servlet-name>
+    <servlet-class>Ejemplos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ejemplo4_PP</servlet-name>
+    <url-pattern>/Ejemplo4_PP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Ejemplo5_PP</display-name>
+    <servlet-name>Ejemplo5_PP</servlet-name>
+    <servlet-class>Ejemplos.Ejemplo5_PP</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ejemplo5_PP</servlet-name>
+    <url-pattern>/Ejemplo5_PP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name> Ejemplo6_PP</display-name>
+    <servlet-name> Ejemplo6_PP</servlet-name>
+    <servlet-class>Ejemplos.Ejemplo6_PP</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name> Ejemplo6_PP</servlet-name>
+    <url-pattern>/ Ejemplo6_PP</url-pattern>
+  </servlet-mapping>
+</web-app>

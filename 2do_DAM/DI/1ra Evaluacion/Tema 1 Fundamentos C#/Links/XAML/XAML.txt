@@ -1,0 +1,2 @@
+Editor de código XAML: https://learn.microsoft.com/es-es/visualstudio/xaml-tools/xaml-code-editor?view=vs-2022&authuser=0
+Que es Xaml: https://learn.microsoft.com/es-es/dotnet/desktop/wpf/xaml/?view=netdesktop-7.0

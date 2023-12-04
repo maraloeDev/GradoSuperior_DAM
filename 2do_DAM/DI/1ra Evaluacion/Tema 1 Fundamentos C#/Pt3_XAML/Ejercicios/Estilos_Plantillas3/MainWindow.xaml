@@ -1,0 +1,80 @@
+﻿<Window x:Class="Estilos_Plantillas3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estilos_Plantillas3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="900">
+
+    <Window.Resources>
+        <Style x:Key="botonesMolones2" TargetType="Button">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                    <Setter Property="FontSize" Value="20"></Setter>
+                    <Setter Property="FontStyle" Value="Italic"></Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="etiquetaMolona" TargetType="TextBlock">
+            <Setter Property="FontStyle" Value="Italic"></Setter>
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="Height" Value="100"></Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="22" ShadowDepth="2" Color="Black" Opacity="2"></DropShadowEffect>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Blue"></Setter>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style x:Key="tbMolon" TargetType="TextBlock">
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Height" Value="50"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FAFAD2"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="btnMolon" TargetType="Button">
+            
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
+            
+            <Style.Triggers>
+                <Trigger Property="Background" Value="Red"></Trigger>
+                
+            </Style.Triggers>
+        </Style>
+        
+    </Window.Resources>
+
+    <Grid>
+
+        <Button Style="{StaticResource botonesMolones2}" Content="botón 1"  Margin="350,74,350,330" FontWeight="Bold"></Button>
+        <Button Style="{StaticResource botonesMolones2}" Content="botón 2"  Margin="350,104,350,300" FontWeight="Bold"></Button>
+        <Button Style="{StaticResource botonesMolones2}" Content="botón 3"  Margin="350,134,350,270"></Button>
+        
+        <TextBlock Style="{StaticResource etiquetaMolona}" VerticalAlignment="Top" HorizontalAlignment="Center" Text="etiqueta" Height="25" Margin="0,242,0,0"></TextBlock>
+        <TextBlock Style="{StaticResource etiquetaMolona}" VerticalAlignment="Top" HorizontalAlignment="Center" Text="otra etiqueta" Height="25" Margin="0,272,0,0" Width="71"></TextBlock>
+
+        <Button Style="{StaticResource botonesMolones2}" Content="botón 4"  Margin="400,302,400,202" FontWeight="Bold"></Button>
+
+        <TextBlock Style="{StaticResource tbMolon}" Text="Esto es un TextBlock" Margin="20,357,759,150"></TextBlock>
+
+        <Button Style="{StaticResource btnMolon}" Content="otro botón" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,426,0,0"></Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MartinSonsecaEduardo</string>
+    <string name="name">Name</string>
+    <string name="inserte_calificacion">Inserte Calificacion</string>
+    <string name="textview">TextView</string>
+    <string name="insete_nombre">Insete Nombre</string>
+    <string-array name="spCalificaciones">
+        <item>Suspenso</item>
+        <item>Sobresaliente</item>
+        <item>Aprobado</item>
+    </string-array>
+</resources>

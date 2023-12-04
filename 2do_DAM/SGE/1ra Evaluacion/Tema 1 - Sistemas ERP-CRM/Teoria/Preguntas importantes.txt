@@ -1,0 +1,137 @@
+Que es la producción artesanal y masiva
+		- producción artesanal : Una buena calidad de los productos, por lo tanto tiene un coste elevado
+		- producción masiva : Los costes son bajos, pero con una calidad resistente
+
+Juntando estas 2 producciones se saca la produccion ajustada es la reación de pequeños lotes de productos que la empresa mejora de forma continua
+
+
+El area más basica de una empresa, es el area de marketing y ventas, se encarga de la venta y la promoción del producto que tiene que una estrategia de mercado.
+EL area mas importante es la innovación de producto, poque una vez que lo creas, habra que mantenerlo, o actualizarlo....
+
+Que es un ERP : Un ERP (Enterprise Resources Planning) es un Sistema de Gestión Empresarial que integra todas las areas de una empresa.
+		OBJETIVOS:
+		- Optimización de procesos : Ayuda a la empresa a mejorar los procesos
+		- Programa unico y centralizado : Hay una sola BD, y los datos se introducen una vez
+		- Acceso a toda la información : Se maneja la mistma información
+		- Consolidación de operaciones : Mejora el objetivo de la empresa
+		- Reingenieria de procesos : Adapta los procesos de la empresapara poder controlarles en ERP
+
+El ABC de un ERP es el siguiente
+		- Sistema Integral : Controla todos los procesos de la compañia.
+		- Sistema Modular : Las funcionalidades del ERP estan divididas en modulos.
+		- Sistema Adaptable : El ERP se adapta a cada empresa.
+
+Ventajas:
+	- Menor redundancia de la información
+	- Control total de la actividad de la empresa
+	- Posibilidad de adaptación a las necesidades de la empresa :El ERP se puede modificar
+	- Facililidad en la toma de decisiones estrategicas
+	- Rentabiliza los procesos
+	- Reducción del inventario
+	- Mejora de servicio al cliente
+	- Aumento de ventas
+	- Ventaja competitiva 
+	- Mayor eficiencia empresarial : obtiene resultados con el menos esfuerzo posible
+
+Un Inventario es el recuento de los productos (unidades)
+
+Problemas
+	- Tiempo de diseño e instalacón
+	- Costes fijos o periodicos
+	- Resistenta del personal de la empresa a la hora de compartir información
+	- Capatización del personal de la empresa
+	- Dificultad de adaptación del ERP a los procesos de la empresa
+	- Altos costes
+	- Actualizaciones
+	- Implementación costosa
+
+Un software de gestió, puete tener problemas de compatibilidades
+
+Tipos de ERP
+
+Segun su DISEÑO
+	-ERP horizontal: Es mas costosa, y genera una dependencia total hacia la empresa.
+	-ERP vertical esta orientado a un sector especifico.
+	- A Medida : Esta hecho desde 0 para la empresa.
+
+Segun su INSTALACIÓN
+	- On-premise, es la instalación local y cada uno lo tiene en su equipo.
+	- En la nube, esta el la web
+
+Segun su LICENCIA
+	- ERP propietario: Esta a disposición del cliente
+	-ERP opensource/Libre: Es de codigo abierto, y no se necesita ninguna licencia
+El software libre proporciona 4 libertades
+	-Usar el software
+	-Estudiar su funcionamiento
+	-Distribuir copias
+	-Mejorar el software
+
+Una licencia de sofware en una Autorización o permiso concedido por los autores del software para poder utilizarlo
+
+Que ERP elegir
+	-ERP Saas : Es un ERP en la nube, es la tendencia de de los ERPs
+
+Ventajas de los Saas
+	- Reducción de infraestructuras
+	-Mayor seguridad
+	-Acceso sin limites
+¿Cuale son los pasos que hay que seguir un ERP?
+
+	-Listar procecesos y requerimientos criticos
+	-Hablar con los proveedores
+	-Crear una lista de soluciones
+	-Comparar propuestas
+
+Que es CRM : El CRM (Costumer Relationship Managment) es una estrategia de negocio, focalizado hacia la satisfacción del cliente, es un concepto generico que engloba las diversas solu¡¡ciones H/S, es la respuesta de la tecnologia a la  par ala necesidad de las empresas para fortalecer relaciones con el cliente, NUESTRO OBJETIVO ES CONOCER EL CRM COMO APLICACION
+
+Diferencias entre Bak y front : La parte back (Esta parte no interactua con el cliente sini que coordinan la comunicación del a empresa), es la parte del CRM, y la parte Front )Es como una estrategia para conocer al cliente), es para el ERP.
+
+Modulos de un CRM :
+	-Clientes
+	-Contactos
+	-Productos
+	-Informes graficos
+
+Front, es el mundo exterior: Modulos:
+ - Ventas y Marketing
+
+Forma de contactar :
+ - Redes sociales
+ - Ferias y eventos
+
+Back, son los entresijos de la empresa
+  - Parte de RRHH
+  - contable
+
+Atrae los clientes, que se traen, a traves de aplicaciones CRM 
+
+
+Puede haber 2 BD (mejor unica)
+
+Caracteristicas de un CRM
+	-Personalizable
+	-Adaptable
+	-Rapida
+	-Facilidad de comunicación
+
+
+Ventajas del CRM
+	-Aumento de información del cliente
+	-Aumento de las ventas
+	-Mayor productividad
+	-Inversión rentable
+
+Desventajas
+	-Elvados costes
+	-Dificultad de manejo de la información
+
+CRM Integrados: Se incorpora como modulo al ERP
+CRM Aislados : Proyectos OpenSource
+
+Los modulos unprescindibles de ERP son :
+	- Finanzas y Contabilidad
+	- Compras
+	- Ventas
+
+El blockchain permite llevar el control de los productos, desde que sale, hastta que llega al cliente (Hacer un seguimiento del producto)

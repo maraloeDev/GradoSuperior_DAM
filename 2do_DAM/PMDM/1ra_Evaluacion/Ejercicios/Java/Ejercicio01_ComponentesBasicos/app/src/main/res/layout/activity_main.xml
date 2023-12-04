@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:background="@color/colorTitulo"
+        android:gravity="center"
+        android:text="@string/ejercicio01_componentesbasicos"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvResults"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:hint="@string/resutado"
+        android:textColorHint="#8D6E63" />
+
+    <LinearLayout
+        android:id="@+id/lyrow123"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D6D7D7">
+
+        <Button
+            android:id="@+id/b1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:text="@string/_1"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/b2"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_2"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/b3"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_3"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyrow456"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D6D7D7"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/b4"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_4"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/b5"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_5"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/b6"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_6"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyrow789"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#D6D7D7"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/b7"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_7"
+            android:textColor="@color/black"
+            tools:ignore="NestedWeights,VisualLintButtonSize,TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/b8"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_8"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/b9"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/_9"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D6D7D7"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bSume"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/bSume"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/bEqual"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/equalSigne"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/bResta"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/substractionSigne"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bClear"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="#D6D7D7"
+        android:text="@string/clean"
+        android:textColor="@color/black" />
+
+</LinearLayout>

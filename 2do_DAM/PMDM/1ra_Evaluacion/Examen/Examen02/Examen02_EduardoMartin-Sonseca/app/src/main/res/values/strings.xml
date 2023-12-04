@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Examen02_EduardoMartin-Sonseca</string>
+    <string name="a_adir">Añadir</string>
+    <string name="inaerte_nombre">Inaerte Nombre</string>
+    <string name="name">Name</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="nombre">Nombre</string>
+    <string name="sexo">Sexo</string>
+</resources>

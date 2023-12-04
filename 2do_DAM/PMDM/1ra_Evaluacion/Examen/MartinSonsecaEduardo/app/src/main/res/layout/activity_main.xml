@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+<variable
+    name="alumno"
+    type="com.example.martinsonsecaeduardo.Alumno" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:id="@+id/lyNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="0"
+                android:text="@string/insete_nombre" />
+
+            <EditText
+                android:id="@+id/etNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="0"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="text"
+                android:text="@{alumno.nombre}"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyCalificacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvNumeroCalificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="0"
+                android:text="@string/inserte_calificacion" />
+
+            <Spinner
+                android:id="@+id/spCalificacion"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="0"
+                android:entries="@array/spCalificaciones"
+                android:onItemSelected="@{(Spinner)alumno.calificacion}"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvDatos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

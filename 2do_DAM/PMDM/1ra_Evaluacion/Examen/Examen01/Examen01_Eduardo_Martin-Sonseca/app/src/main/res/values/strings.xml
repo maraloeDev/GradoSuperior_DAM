@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Examen01_Eduardo_Martin-Sonseca</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="name">Name</string>
+    <string name="name1">Name</string>
+    <string name="ciudad">Ciudad</string>
+    <string-array name="spCiudad">
+        <item>Valladolid</item>
+        <item>Burgos</item>
+        <item>Segovia</item>
+        <item>Soria</item>
+    </string-array>
+
+    <string name="edad">Edad :</string>
+    <string name="nombre">Nombre :</string>
+    <string name="grabar">Grabar</string>
+</resources>

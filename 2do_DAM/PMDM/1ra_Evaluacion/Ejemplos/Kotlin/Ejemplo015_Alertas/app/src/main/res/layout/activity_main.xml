@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="usuario"
+            type="com.example.ejem15_alertas.Usuario" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/b_alerta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alerta" />
+
+        <Button
+            android:id="@+id/b_seleccionMultiple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selección múltiple" />
+
+        <Button
+            android:id="@+id/b_dialogoPersonalizado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alerta Personalizada" />
+
+        <ImageView
+            android:id="@+id/iv_imagen"
+            android:layout_width="match_parent"
+            android:layout_height="455dp"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/tv_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            tools:text="Nombre"
+            android:text="@{usuario.nombre}"
+             />
+
+        <TextView
+            android:id="@+id/tv_estadoCivil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            tools:text="Estado civil"
+            android:text="@{usuario.soltero?`Soltero`:`Casado`}"
+             />
+
+        <TextView
+            android:id="@+id/tv_ciudadNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            tools:text="Ciudad de nacimiento"
+            android:text="@{usuario.direccion}" />
+
+
+    </LinearLayout>
+</layout>

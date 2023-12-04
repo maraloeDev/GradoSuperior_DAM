@@ -1,0 +1,49 @@
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<form action="Ejercicio1" method="post">
+		<h1>MERCHANDISING GF</h1>
+		<fieldset >
+			<table>
+				<tr colspan="4">
+					<td><label>Nombre:</label></td>
+					<td><input type="text" name="nombre" /></td>
+				</tr>
+				<tr>
+					<td><label>Apellidos:</label></td>
+					<td><input type="text" name="apell" /></td>
+				</tr>
+				<tr>
+					<td><label>Lista de productos:</label></td>
+					<td colspan="3"><select name="productos" multiple>
+							<option value="gorra">gorra</option>
+							<option value="sudadera">sudadera</option>
+							<option value="polo">polo</option>
+							<option value="camiseta">camiseta</option>
+							<option value="llavero">llavero</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td ><label>Pago:</label></td>
+					<td><input type="radio" value="Tarjeta" name="pago" />Tarjeta
+					<input type=radio value="PayPal" name="pago" />PayPal
+					<input type=radio value="efectivo" name="pago" />Efectivo</td>
+				</tr>
+				<tr>
+					<td><label>Emitir Factura:</label><input type="checkbox" value="factura" name="factura" /></td>
+					<td><label>Emitir Ticket :</label><input type="checkbox" value="ticket" name="ticket" /></td>
+				</tr>
+				<tr>
+					<td align="left"><input type="submit" value="Ver Compra" name="Ver Cesta" /></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lyPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/lyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="143dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/nombre"
+            android:textColor="#8D6E63"
+            tools:ignore="NestedWeights" />
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="text"
+            tools:ignore="VisualLintBounds" />
+
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/tbOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/togglebutton" />
+
+    <LinearLayout
+        android:id="@+id/lyEdad"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvSexo"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="@string/sexo"
+            android:textColor="#8D6E63"
+            tools:ignore="NestedWeights" />
+
+        <RadioGroup
+            android:id="@+id/rgSexo"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_weight="0">
+
+            <RadioButton
+                android:id="@+id/rbHombre"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:text="@string/hombre"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck,VisualLintButtonSize" />
+
+            <RadioButton
+                android:id="@+id/rbMujer"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="@string/mujer"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck,VisualLintButtonSize" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bAnadir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/a_adir"
+        tools:ignore="VisualLintButtonSize" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0">
+
+        <ListView
+            android:id="@+id/lvDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="NestedScrolling" />
+    </ScrollView>
+
+</LinearLayout>
