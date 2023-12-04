@@ -1,0 +1,48 @@
+Ejercicio 1
+
+RECUPERACION - (1,7 punto) 1.- Realiza con doble for un listado HTML en formato
+tabla de la denominación de los productos ordenado por todos los nombre de zona
+existente.
+
+<html>
+<body>
+<table border="1px">
+	<tr>
+	<td>Nombre de la zona</td>
+	<td>Denominación de los productos</td>
+	</tr>
+{for $productos in //produc
+let $dennominacionProd := $productos/denominacion
+
+for $recorreZonas in //zona
+let $codezone := $recorreZonas/nombre
+order by $codezone
+return <tr>
+	
+	<td>{data($codezone)}</td>
+	<td>{data($dennominacionProd)}</td>
+	
+	</tr>}
+</table>
+</body>
+</html>
+
+
+(1,6 punto) 2.- Modifica el xml de productos insertando por cada producto una nueva
+etiqueta que sea stock_disponible que resulte de la resta del stock_actual menos el
+stock_minimo.
+
+for $todosProductos in //produc
+let $menor :=  number($todosProductos/stock_minimo) -  number($todosProductos/stock_actual)
+return update insert
+<stock_disponible>{$menor}</stock_disponible>
+into $todosProductos
+
+(1,3 punto) 3.- Incrementa 5 euros el precio de cada uno de los productos.
+
+for $productosdelPrecio in //produc
+let $sumas:= $productosdelPrecio/precio + 5
+return update value $productosdelPrecio/precio with $sumas
+
+(1,3 punto) 4.- Elimina todos los productos que se venden en la zona de Andalucía.
+

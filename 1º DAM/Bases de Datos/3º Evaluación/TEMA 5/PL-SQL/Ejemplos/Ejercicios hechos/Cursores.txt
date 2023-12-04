@@ -1,0 +1,356 @@
+Sergio Otero
+declare
+	cursor empleados is
+    	select emple.apellido, emple.oficio, emple.comision from emple where emple.comision>500;
+	v_apellido	emple.apellido%type;
+    v_oficio	emple.oficio%type;
+    v_comision	emple.comision%type;
+begin
+    --bucle while
+	open empleados;
+	fetch empleados into v_apellido, v_oficio, v_comision;
+	while empleados%found
+    loop
+		dbms_output.put_line('Empleado: '||v_apellido||' Oficio: '||v_oficio||' Comision: '||v_comision);
+		fetch empleados into v_apellido, v_oficio, v_comision;
+    end loop;
+    close empleados;
+    
+end;
+
+--LUCIA
+declare
+    cursor empleados is select apellido , oficio, comision from emple where comision >500;
+	v_emple empleados%rowtype;
+begin
+    --Procesamiento con bucle while
+    open empleados;
+	fetch empleados into v_emple;
+	while empleados%found 
+        loop
+        dbms_output.put_line('Nombre: ' || v_emple.apellido || ' Oficio: ' || v_emple.oficio || ' Comision: ' || v_emple.comision);
+		fetch empleados into v_emple;
+        end loop;
+    close empleados;
+--Procesamiento con bucle loop-exit
+	open empleados;	
+        loop
+        fetch empleados into  v_emple;
+        exit when empleados%notfound;
+        dbms_output.put_line('Nombre: ' || v_emple.apellido || ' Oficio: ' || v_emple.oficio || ' Comision: ' || v_emple.comision);
+		end loop;
+    close empleados;
+--Procesamiento con bucle for loop
+ 	for empleado in empleados
+        loop
+          dbms_output.put_line('Nombre: ' || v_emple.apellido || ' Oficio: ' || v_emple.oficio || ' Comision: ' || v_emple.comision);
+        end loop;
+end; 
+
+/* Crea un procedimiento que reciba una cadena y visualice el apellido y el número de
+empleado de todos los empleados cuyo apellido contenga la cadena especificada. Al finalizar, visualiza
+el número de empleados afectados*/
+
+/*David Rayaces*/
+
+select * from emple;
+create or replace procedure ver_apellido (cadena varchar2) is
+    cursor gente is select apellido apellido, emp_no numero from emple where apellido like '%' || cadena || '%';
+begin
+    for persona in gente
+        loop
+            dbms_output.put_line('Apellido: ' ||  persona.apellido ||  ' Nº empleado: ' || persona.numero);
+        end loop;
+
+end ver_apellido;
+
+begin
+    ver_apellido('O');
+end;
+
+MICHAEL SERRUDO
+/*2. (EMPLE y DEPART) Crea un procedimiento que muestre el apellido y la fecha de alta de todos los empleados ordenados por fecha de alta. Utiliza los 3 tipos de bucles.*/
+create or replace procedure nombrefecha
+is
+    cursor datos is
+    select emple.apellido, emple.fecha_alt
+    from emple order by emple.fecha_alt asc;
+
+	v_emple datos%rowtype;
+begin
+
+    --Procesamiento con bucle while
+    open datos;
+	fetch datos into v_emple;
+	while datos%found 
+        loop
+        dbms_output.put_line('Nombre: ' || v_emple.apellido || ' Fecha Alta: ' || v_emple.fecha_alt);
+		fetch datos into v_emple;
+        end loop;
+    close datos;
+--Procesamiento con bucle loop-exit
+	open datos;	
+        loop
+        fetch datos into  v_emple;
+        exit when datos%notfound;
+        dbms_output.put_line('Nombre: ' || v_emple.apellido || ' Fecha Alta: ' || v_emple.fecha_alt);
+		end loop;
+    close datos;
+--Procesamiento con bucle for loop
+    for emple in datos
+    loop
+	dbms_output.put_line('Nombre: ' || emple.apellido || ' Fecha Alta: ' || emple.fecha_alt);
+    end loop;
+end nombrefecha;
+
+--prueba nombrefecha
+begin
+    nombrefecha;
+end;
+David Rayaces
+
+select apellido from emple where emp_no in (select distinct dir from emple where dir is not null);
+
+create or replace function actualizarDirector (viejoDirector varchar2, nuevoDirector varchar2) return number
+is 
+    nAfectados number;
+	cursor empleados is select apellido apellido, emp_no numero, dir director from emple where dir like viejoDirector;
+begin 
+    
+	for empleado in empleados
+    	loop
+    		dbms_output.put_line('Nombre: ' || empleado.apellido || ' Numero empleado: ' || empleado.numero || ' Director: ' || empleado.director);
+			update emple set dir = nuevoDirector where emple.emp_no like empleado.numero;
+			nAfectados := nAfectados + 1;
+    end loop;
+	dbms_output.put_line('Numero de afectados:' || nAfectados);
+	return nAfectados;
+end actualizarDirector;
+
+select * from emple where dir like '7839';
+select * from emple where dir like '7698';
+begin
+	dbms_output.put_line(actualizarDirector ('7698', '7839'));
+end;
+select * from emple where dir like '7839';
+select * from emple where dir like '7698';
+
+--Angel Paredes
+create or replace procedure mostrar_rotados
+is
+    cursor empleados is 
+    select primer.employee_id , first_name, last_name, job.end_date-job.start_date dias, job.job_id
+    from hr.employees primer ,hr.job_history job
+    where primer.employee_id= job.employee_id and
+    (select count(*) from hr.job_history where employee_id = primer.employee_id group by employee_id)>1;
+begin
+    for empleado in empleados
+    loop
+    	DBMS_OUTPUT.PUT_LINE('Codigo: '||empleado.employee_id||
+    						'  Nombre: '||empleado.first_name||
+    						'  Apellido: '||empleado.last_name||
+    						'  Puesto: '||empleado.job_id||
+    						'  Num de dias: '||empleado.dias);
+    end loop;
+    exception 
+          WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('No se encontró ningún registro ');
+  
+end;
+select * from emple where dir like '7839';
+select * from emple where dir like '7698';
+begin
+	dbms_output.put_line(actualizarDirector ('7698', '7839'));
+end;
+select * from emple where dir like '7839';
+select * from emple where dir like '7698';
+begin
+    mostrar_rotados();
+end;
+--Rubén Alfonso
+create or replace procedure cinco_max
+is
+	cursor datos is select job_title, max_salary from hr.jobs order by 2 desc;
+	dato		datos%rowtype;
+begin
+    open datos;
+	 for v_contador in 1..5 loop
+        fetch datos into dato;
+        dbms_output.put_line('Puesto: ' || dato.job_title || ', salario máximo: ' || dato.max_salary);
+    end loop;
+	close datos;
+end cinco_max;
+
+begin
+	cinco_max;
+end;
+
+--Juan Garcia
+select * from emple order by dept_no;
+create or replace function incrementar (departamento depart.dept_no%type) return number
+is
+	cursor empleado is select emple.*, rowid from emple where emple.dept_no = departamento;
+	registro 	empleado%rowtype;
+	gasto		number;
+	v_salario	emple.salario%type;
+begin
+open empleado;
+	fetch empleado into registro;
+	while empleado%found
+        loop
+        	if (registro.oficio like 'VENDEDOR') then
+        		if registro.comision > (0.5 * registro.salario) then
+					gasto := gasto + (0.10 * registro.salario);
+        			v_salario := registro.salario + (0.10 * registro.salario);
+					update emple set salario = v_salario where rowid = registro.rowid;
+				else
+                    gasto := gasto + (0.05 * registro.salario);
+        			v_salario := registro.salario + (0.05 * registro.salario);
+					update emple set salario = v_salario where rowid = registro.rowid;
+				end if;
+
+			elsif (registro.oficio like 'PRESIDENTE') then
+				gasto := gasto;
+            else
+            	gasto := gasto + (0.03 * registro.salario);
+        		v_salario := registro.salario + (0.03 * registro.salario);
+				update emple set salario = v_salario where rowid = registro.rowid;
+			end if;
+
+			fetch empleado into registro;
+        end loop;
+	return gasto;
+	close empleado;
+end incrementar;
+
+declare
+	gasto_total		number;
+begin
+	gasto_total := incrementar(10);
+	dbms_output.put_line('Gasto total: ' || gasto_total);
+end;
+
+--LUIS
+create or replace function increment_sal(departamento emple.dept_no%type) return emple.salario%type
+is
+    cursor empleados is
+    select emple.*, rowid from emple
+    where emple.dept_no = departamento
+    for update;
+
+    v_incremento emple.salario%type;
+    v_gasto emple.salario%type := 0; --inicializado a 0 pa que no sea nulo
+
+begin
+    for empleado in empleados  
+    loop
+        case empleado.oficio   
+   		 when 'PRESIDENTE' then
+            v_incremento := 0;
+        when 'VENDEDOR' then
+            if empleado.comision > empleado.salario * 0.5 then
+                v_incremento := empleado.salario * 0.10;
+            else
+                v_incremento := empleado.salario * 0.05;
+            end if;
+        else 
+            v_incremento:= empleado.salario * 0.03;
+        end case;
+
+		update emple
+        set emple.salario = emple.salario + v_incremento
+        where rowid = empleado.rowid;
+        
+        v_gasto := v_gasto + v_incremento;
+
+    end loop;
+
+    return  v_gasto;
+
+end increment_sal;
+
+begin
+    dbms_output.put_line(increment_sal(10));
+end;
+--Lucia
+create or replace procedure separarRegiones
+    is
+    cursor ciudades is select countries.*, rowid from countries;
+	registro ciudades%rowtype;
+	v_region regions.region_id%type;
+	v_MiddleEastID regions.region_id%type := 5;
+	v_AfricaID regions.region_id%type := 4;
+	v_MiddleEast regions.region_name%type;
+	v_Africa regions.region_name%type;
+begin
+	select substr(regions.region_name, 0, INSTR(regions.region_name, 'and')-length('and')+1) MiddleEast
+          into  v_MiddleEast 
+   			 from  regions where regions.region_name like 'Middle East and Africa';
+	select substr(regions.region_name, INSTR(regions.region_name, 'and') + length('and')) Africa
+         into v_Africa
+    		from regions where regions.region_name like 'Middle East and Africa';
+	update regions set regions.region_id = v_AfricaID, regions.region_name = v_Africa where regions.region_name like 'Middle East and Africa';
+	insert into regions(regions.region_id, regions.region_name) values(v_MiddleEastID, v_MiddleEast);
+    open ciudades;
+	fetch ciudades into registro;
+	while ciudades%found
+    loop 
+        if(registro.country_name in('Egypt','Israel','Kuwait')) then
+        dbms_output.put_line('COUNTRY_ID: '|| registro.COUNTRY_ID || 
+        ' COUNTRY_NAME: ' || registro.COUNTRY_NAME || ' REGION ANTERIOR: ' || registro.REGION_ID);
+		v_region := v_MiddleEastID;
+		dbms_output.put_line('Region despues de la actualizacion: ' || v_region );
+        elsif (registro.country_name in('Nigeria','Zambia','Zimbabwe')) then
+        dbms_output.put_line('COUNTRY_ID: '|| registro.COUNTRY_ID || 
+        ' COUNTRY_NAME: ' || registro.COUNTRY_NAME || ' REGION ANTERIOR: ' || registro.REGION_ID);
+		v_region := v_AfricaID;
+		dbms_output.put_line('Region despues de la actualizacion: ' || v_region );
+		else 
+        v_region := registro.region_id;
+        end if;
+		update countries set countries.region_id = v_region where rowid = registro.rowid;
+		fetch ciudades into registro;	
+    end loop;
+	close ciudades;
+exception
+	when no_data_found then dbms_output.put_line('No se han encontrado resultados');
+	when others then dbms_output.put_line('Error...');
+end separarRegiones;
+begin 
+separarRegiones;
+end;
+--Alex de la Fuente
+create or replace procedure separar_regiones is
+	cursor regiones is
+    	select region_id, region_name
+    	from regions
+    	where region_name = 'Middle East and Africa';
+  	v_count number := 0; --Contador de ciudades actualizadas
+  	type city_array is table of varchar2(100); --Array de ciudades de Africa
+  	v_cities city_array := city_array('Egypt', 'Nigeria', 'Zambia', 'Zimbabwe'); --Variable del array de ciudades de Africa
+begin
+    insert into regions (region_id, region_name) values (5, 'Africa');--Creacion de la region Africa
+    for region in regiones --Cursor 
+    loop
+    	update regions
+    	set region_name = 'Middle East' --La region 4 pasa a ser 'Middle East'
+    	where region_id = region.region_id;
+
+    	for i in 1..v_cities.count 
+        loop 
+     		update countries --Metemos las ciudades del array de Africa a la región 'Africa'
+      		set region_id = 5 
+      		where country_name = v_cities(i);
+			v_count := v_count + 1;
+    	end loop;
+  	end loop;
+
+  	if v_count = 0 then
+    	dbms_output.put_line('No se ha encontrado la región "Middle East and Africa" para actualizar.');
+  	else
+    	dbms_output.put_line(v_count || ' ciudades actualizadas correctamente.');
+  	end if;
+end;
+begin
+separar_regiones;
+end;

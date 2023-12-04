@@ -1,0 +1,164 @@
+-- Tablas EMPLE Y DEPART
+select * from depart;
+select * from emple;
+-- 1. Escribe un bloque PL/SQL que borre el departamento número 20, evitando posibles errores por violar
+-- restricciones de integridad referencial, pues el departamento tiene empleados asociados.
+-- Para ello crearemos antes un departamento provisional, al que asignamos los empleados del
+-- departamento 20.
+-- También se informará del número de empleados afectados por la operación. Para ello, puedes utilizar
+-- el atributo SQL%ROWCOUNT, que informa del nº de filas afectadas por la última operación INSERT,
+-- UPDATE o DELETE.
+
+DECLARE
+  num_empleados INTEGER;
+BEGIN
+  -- Crear un departamento provisional
+    create table departamentos(
+	dept_no		NUMBER (5),
+    dnombre		varchar2(100),
+    loc			varchar2(100)    
+    );
+  INSERT INTO departamentos (dept_no, dnombre, loc)
+  VALUES (99, 'Provisional', 'N/A');
+  
+  -- Asignar empleados del departamento 20 al departamento provisional
+  UPDATE empleados
+  SET dept_no = 99
+  WHERE dept_no = 20;
+  
+  -- Obtener el número de empleados afectados por la operación UPDATE
+  num_empleados := SQL%ROWCOUNT;
+  
+  -- Borrar el departamento 20
+  DELETE FROM departamentos
+  WHERE dept_no = 20;
+  
+  -- Mostrar el número de empleados afectados
+  DBMS_OUTPUT.PUT_LINE('Se han asignado ' || num_empleados || ' empleados al departamento provisional.');
+END;
+
+-- 2. Escribe un bloque PL/SQL que modifique el salario de un empleado en función del número de empleados
+-- que tiene a su cargo (es su director):
+-- - Si no tiene ningún empleado a su cargo la subida será de 50 €.
+-- - Si tiene 1 empleado la subida será de 80 €.
+-- - Si tiene 2 empleados la subida será de 100 €.
+-- - Si tiene más de tres empleados la subida será de 110 €.
+-- - Además, si el empleado es PRESIDENTE se incrementará el salario en 30 €.
+-- Resuelve el ejercicio, utilizando la estructura IF posteriormente con CASE.
+-- Los datos de entrada (nº del empleado cuyo salario se va a modificar), se encuentran almacenados en
+-- una tabla llamada DATOS.
+declare
+	v_newsalario emple.salario%type;	--el salario que se actualiza
+begin
+	for	e in (select * from datos)
+	loop
+    	v_newsalario := e.salario;
+    	if e.puesto like 'PRESIDENTE' then
+            v_newsalario := v_newsalario + 30;
+		end if;
+		case e.empl
+		when 0 then
+            v_newsalario := v_newsalario + 50;
+		when 1 then
+            v_newsalario := v_newsalario + 80;
+		when 2 then
+            v_newsalario := v_newsalario + 100;
+		else
+        	v_newsalario := v_newsalario + 110;
+		end case;
+		update emple
+        set salario = v_newsalario
+        where emp_no = e.num;
+    end loop;
+end;
+
+-- 3. Escribe un bloque PL/SQL que calcule y muestre el total de ganancias de todos los empleados (salario y
+-- comisión) y cuántos de éstos tienen un salario superior a 2000 €.
+
+drop table datos;
+create table datos(
+    num	number(4,0)
+);
+
+insert into datos values(7839);
+
+select * from datos;
+
+declare 
+	v_num		number;
+	v_salario 	number;
+begin
+	select * into v_num from datos;
+	select salario into v_salario from emple where emp_no = v_num;
+	dbms_output.put_line('SALARIO ANTES: ' || v_salario);
+	v_salario := v_salario + (v_salario*0.10);
+	update emple
+        set salario = v_salario
+        where emp_no = v_num;
+	dbms_output.put_line('SALARIO DESPUES: ' || v_salario);
+exception
+    when no_data_found then dbms_output.put_line('ERROR. No data.');
+	when too_many_rows then dbms_output.put_line('ERROR. Muchas filas.');
+end;
+
+-- 4. Escribe un bloque PL/SQL que a partir de un número de empleado, incrementarle su salario en un 10%.
+-- Controla las excepciones predefinidas de ORACLE: NO_DATA_FOUND y TOO_MANY_ROWS.
+-- Los datos de entrada (nº del empleado cuyo salario se va a modificar), se encuentran almacenados en
+-- una tabla llamada DATOS.
+
+drop table datos;
+
+create table datos(
+    num	number(4,0)
+);
+
+insert into datos values(7839);
+
+select * from datos;
+
+declare 
+	v_num		number;
+	v_salario 	number;
+begin
+	select * into v_num from datos;
+	select salario into v_salario from emple where emp_no = v_num;
+	dbms_output.put_line('SALARIO ANTES: ' || v_salario);
+	v_salario := v_salario + (v_salario*0.10);
+	update emple
+        set salario = v_salario
+        where emp_no = v_num;
+	dbms_output.put_line('SALARIO DESPUES: ' || v_salario);
+exception
+    when no_data_found then dbms_output.put_line('ERROR. No data.');
+	when too_many_rows then dbms_output.put_line('ERROR. Muchas filas.');
+end;
+
+-- 5. Escribe un bloque PL/SQL que lance la excepción TRABAJO_BASURA, si más de la mitad de los empleados
+-- tienen un salario por debajo de la media (sin contar comisiones).
+declare
+v_salario				number; --almacena el salario de todos los empleados
+v_salario_medio			integer;
+v_cont_emple			integer;
+v_cont_emple_media		integer;
+v_trabajo basura	exception; --declaracion 
+begin
+    --Se declara exception
+
+    select avg(salario) into v_salario from emple
+    select count (*) into v_cont_emple from emple where salario < v_salario_medio;
+
+if v_cont_emple_media > (v_cont_empleados/2) then
+    raise trabajo_basura
+    end if;
+
+exception
+
+when trabajo_basura then dbms_output.put.line('Impresa con trabajo basura');
+when no_data_found then dbms_output.put.line('Impresa con trabajo basura');
+when to_many_rows then dbms_output.put.line('Impresa con trabajo basura');
+when others then dbms_output.put.line('ERROR');
+    
+
+
+declare
+

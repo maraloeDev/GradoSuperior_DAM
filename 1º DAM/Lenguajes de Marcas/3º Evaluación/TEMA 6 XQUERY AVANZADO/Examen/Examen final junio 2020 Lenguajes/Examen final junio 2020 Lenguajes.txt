@@ -1,0 +1,35 @@
+Ejercicio 2. (1,75 puntos)
+Seleccionar los nombre de los alumnos que tienen la media de nota superior a la
+media de las notas de sú carrera.
+for $NombreAlumnos in //alumno
+let $NotaMedia := avg($NombreAlumnos/nota)
+return $NotaMedia
+
+Ejercicio 3. (1,75 puntos)
+Muestra en formato tabla HTML el nombre y la materia de los alumnos repetidores.
+<HTML>
+<BODY>
+<TABLE BORDER='2px'>
+	<TR>
+		<TD>Nombre</TD>
+		<TD>Materia</TD>
+	</TR>
+{for $alumnosRepetidores in //alumno[@tipo = "repetidor"]
+let $nombreAlumno := $alumnosRepetidores/nombre
+let $nombremateria := $alumnosRepetidores/materia
+return <TR>
+		<TD>{data($nombreAlumno)}</TD>
+		<TD>{data($nombremateria)}</TD>
+</TR>}
+</TABLE>
+</BODY>
+</HTML>
+
+Ejercicio 4. (1,75 puntos)
+Nombre y materia del alumno que mejor expediente tiene.
+
+//alumno [nota = max(nota)]
+
+Ejercicio 5. (1,75 puntos)
+Contabiliza cuántos repetidores hay
+count(//alumno[@tipo = "repetidor"])

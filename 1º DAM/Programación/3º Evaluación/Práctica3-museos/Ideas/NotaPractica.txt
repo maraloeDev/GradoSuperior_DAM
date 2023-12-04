@@ -1,0 +1,11 @@
+crear tabla de ranking de puntos(id_ranking, nombre_jugador, puntos_jugador)
+guardar las url de imsgenes en nuestro repositorio
+
+- MVC
+views: GUI (frames)(La principal se puede acceder desde el jframe o desde un main 'externo')
+models: entidades(pojos x5, que estan asociadas a las tablas)
+daos: dao(5 clases, en las que programan los cru de cada tabla)
+controls: (1 por ventana)
+utils: gestorBD (conectar, desconectar, url, etc)
+
+

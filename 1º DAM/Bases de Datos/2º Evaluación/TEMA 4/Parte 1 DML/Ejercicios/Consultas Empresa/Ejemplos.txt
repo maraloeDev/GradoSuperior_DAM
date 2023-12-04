@@ -1,0 +1,63 @@
+-- 70 Actualiza la cuota de los vendedores de la oficina con mas vendedores 
+-- con un valor igual a la media de cuotas de los vendedores de NY
+update repventas
+set cuota = (select avg(cuota)
+              from repventas,oficinas
+              where oficinas.oficina_rep = oficina
+              and oficinas.ciudad = 'New York'= select oficina_rep
+                      from repventas
+                      group by oficina_rep
+                      having count(*) = (select max(count(*)) 
+                      from repventas
+                      group by oficina_rep));
+
+-- Sacar oficina con mas vendedores
+                    select oficina_rep
+                      from repventas
+                      group by oficina_rep
+                      having count(*) = (select max(count(*)) 
+                      from repventas
+                      group by oficina_rep);
+
+-- 71 Para los productos del fabricante ACI, actualiza su producto al doble y las existencias del producto 'BIC 41089'
+update productos
+set (id_fab, existencias) =(select id_fab
+                          from productos
+                          where id_fab like 'ACI');
+
+--72  Elimina los productos que no han sido vendidos
+delete from productos
+where not exist (select * from pedidos
+		 where pedidos.fab = productos.id_fab and pedidos.producto = productos.id_productos);
+
+-- 66 Insertar un nuevo vendedor de nombre Pedro Perez con numero de empleado 99
+--    asociado a la oficina con mayor numero de empleados, la fecha de conttrato es la actual
+insert into repventas
+select distinct 99, oficina_rep, null, 'Pedro Perez',50,null,sysdate,1000,0
+from repventas
+where oficina_rep  in (select oficina_rep
+                      from repventas
+                      group by oficina_rep
+                      having count(*) = (select max(count(*)) 
+                      from repventas
+                      group by oficina_rep));
+
+-- 67 Insertar un nuevo cliente en la base de datos con codigo 1111, como es una filial de Acme MFG
+--    el resto de datos del nuevo cliente seran los mismos que la empresa almacenada
+
+insert into clientes
+select distinct 1111, rep_clie, empresa, limite_credito
+from clientes
+where empresa like 'Acme Mfg.';
+
+-- 68 Modifica las empresas acme Mfg. aumentando en 3000 € el limite de credito
+update clientes
+set limite_credito = limite_credito + 3000
+where empresa like 'Acme Mfg.';
+
+-- 69 Actualiza los datos del vendedor bill adams asignandole el manager y el titulo que tiene asignado Arbi Fich
+update repventas
+set  (director,titulo) = (select repventas.director, repventas. titulo 
+                        from repventas
+                        where nombre like 'Bill Adams');
+

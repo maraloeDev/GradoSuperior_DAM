@@ -1,0 +1,49 @@
+EJEMPLOS
+/*Ejemplo de Procedure
+Modifica el oficio de un empleado cuyo codigo y nuevo oficio son recibidos como parametros
+*/
+create or replace procedure cambiar_oficio(codigo emple.emp_no%type, oficio varchar2)
+is
+    v_anterior_oficio varchar2(10);
+begin
+    select oficio into v_anterior_oficio from emple where emp_no = codigo;
+update emple set emple.oficio = oficio where emp_no = codigo;
+if (sql%rowcount >0 ) then
+        dbms_output.put_line('Actualizacion realizada');
+dbms_output.put_line('Oficio anterior: ' || v_anterior_oficio);
+dbms_output.put_line('Oficio nuevo: ' || oficio);
+end if;
+exception
+when no_data_found then dbms_output.put_line('ERROR. No data.');
+when too_many_rows then dbms_output.put_line('ERROR. Muchas filas.');
+when others then dbms_output.put_line('ERROR..');
+end cambiar_oficio;
+begin
+    cambiar_oficio(7839, 'JEFAZO');
+end;
+select * from user_procedures;
+select * from user_objects;
+/*Ejemplo de function
+Devuelve el codigo del empleado cuyos apellidos
+son recibidos como parametro
+*/
+create or replace function buscar_empleado(apellidos varchar2) return number
+is
+    v_numero_emple number;
+begin
+    select emp_no into v_numero_emple from emple where emple.apellido like apellidos;
+return v_numero_emple;
+exception
+when no_data_found then dbms_output.put_line('ERROR. No data.');
+when too_many_rows then dbms_output.put_line('ERROR. Muchas filas.');
+when others then dbms_output.put_line('ERROR..');
+end buscar_empleado;
+begin
+dbms_output.put_line(buscar_empleado('SANCHEZ'));
+end;
+begin
+  --cambiar_oficio(7839, 'JEFAZO');
+cambiar_oficio( oficio => 'PRESIDENTE', codigo => 7839); -- Notacion nominal
+--dbms_output.put_line(buscar_empleado('SANCHEZ'));
+end;
+select * from user_source;

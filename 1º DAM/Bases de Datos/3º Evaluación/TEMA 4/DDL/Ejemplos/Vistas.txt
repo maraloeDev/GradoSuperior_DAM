@@ -1,0 +1,56 @@
+-- Vistas Una vista es para ver informacion de las tablas, las constraints, los indices... Estas vistas nos muestran informacion de tablas que tambien son de oracle
+-- una vista no es una table, es almacena una consulta, se puede utilizar cuantas veces quiera, cuando ejecutamos una select, tambien ejecucamos la vista,
+-- ocupa poco espacio debido a que solo ejecuta una consulta, oculta el almacenamiento de los datos
+		-- Proporciona un nivel de seguridad
+		-- Permite realizar consultas complejas
+
+-- Simples basadas en una tabla y no contienen funciones de grupo, solo admite sentencias DML
+-- Complejas, permites utilizar todo,
+--La simple permite ejecutar sentencias DDL, la compleja no
+
+-- ESTO ES PARA VISTAS SIMPLES
+
+select * from emp;
+select * from dept;
+desc emp;
+desc scott.emp;
+desc dept;
+insert into dept
+    select * from scott.dept;
+insert into emp(empno, deptno, ename, job, mgr, hiredate, sal, comm)
+select empno ,deptno, ename, job, mgr, hiredate, sal, comm from scott.emp;
+desc emp;
+--Cambiar nombre de las columnas
+create or replace view emple30 (num_emp,deptno, nombre_emp, titulo_emp, jefe_emp, contrato_emp, salario_emp, comisiones_emp)
+as
+select * from emp where emp.deptno = 30
+with check option;
+select * from user_views;
+select * from all_views;
+desc emple30;
+
+--Insertamos a traves de la vista
+insert into emple30 values(999,30,'Prueba', null, null, sysdate, 1000, 1000);
+insert into emple30 values(9900,10,'Prueba2', null, null, sysdate, 1000, 1000);
+--Modificar a traves de la vista
+update emple30
+    set nombre_emp= 'nombre empleado'
+where num_emp= 999;
+--Modifcar con check
+update emple30
+    set deptno= 10
+where num_emp= 999;
+
+--Borrado a traves de la vista
+delete from emple30 where num_emp=999;
+select * from emple30;
+
+drop table emp;
+--Creacion de sinonimos
+create synonym empleados_dept_30 for emple30;
+create synonym departamentos for dept;
+select * from user_synonyms;
+select * from departamentos;
+select * from empleados_dept_30;
+--Borrado de sinonimos
+drop synonym departamentos;

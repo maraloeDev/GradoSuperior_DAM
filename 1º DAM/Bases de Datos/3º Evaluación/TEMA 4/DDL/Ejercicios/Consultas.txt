@@ -1,0 +1,165 @@
+-- Tablas PEDIDOS, TIENDAS Y VENTAS (TABLAS_DDL_1.sql)
+
+-- 1. Modifica las columnas de la tabla PEDIDOS para que las UNIDADES_PEDIDAS puedan almacenar 
+--	  cantidades numéricas de 6 dígitos
+
+	alter table PEDIDOS
+		modify(
+		UNIDADES_PEDIDAS	number(6));
+
+ desc pedidos;
+
+-- 2 A partir de la tabla TIENDAS impide que se den de alta más tiendas en la provincia de 'TOLEDO'.
+
+alter table TIENDAS 
+add constraint	provincia check(provincia != 'Toledo');
+
+-- 3 Añade a las tablas PEDIDOS y VENTAS una nueva columna para que almacenen el PVP del artículo
+
+alter table PEDIDOS
+add(
+    PVP		number(10)
+);
+
+alter table VENTAS
+add(
+    PVP		number(10)
+);
+
+select * from ventas;
+
+select * from pedidos;
+
+-- Tablas EMP y DEPT (esquema SCOTT)
+
+-- 4 Crea una vista llamada NOMBRES con los campos ENAME, JOB, DEPTNO de la tabla EMP.
+create view NOMBRES
+as
+select ENAME, JOB, DEPTNO from scott.emp;
+
+select * from NOMBRES;
+
+-- 5 Crea una vista como la del punto anterior, pero que se llame NOMBRES2 y las 
+--   columnas de la vista se llamen NOMBRE, PUESTO y DEPARTAMENTO.
+create view NOMBRES2
+as
+select ENAME "NOMBRE", JOB "PUESTO", DEPTNO "DEPARTAMENTOS" from scott.emp;
+
+select * from NOMBRES2;
+
+-- 6 Crea una vista llamada NOMBRES3, con los campos NOMBRE, PUESTO, DESC_DEPARTAMENTO y 
+--   LOCALIZACION, pero solo de los empleados de Nueva York.
+
+create or replace view NOMBRES3
+as
+select emp.ENAME "NOMBRE", emp.JOB "PUESTO", emp.DEPTNO "DESC_DEPARTAMENTO", dept.LOC "LOCALIZACION"
+from scott.emp,scott.dept
+where emp.deptno = dept.deptno 
+and dept.LOC like 'NEW YORK';
+
+select * from NOMBRES3;
+
+-- 7  Modifica la tabla EMP, aumentando el tamaño de la columna ENAME a 30 caracteres.
+
+alter table emp
+modify (
+
+    ENAME	VARCHAR2(30)
+);
+
+desc emp;
+
+-- 8 Utilizando la vista NOMBRES3, realiza las siguientes operaciones:
+		-- Inserta un nuevo analista llamado PEPE, con código 7000, en el departamento de Ventas.
+insert into nombres3 (NOMBRE,	PUESTO,		DESC_DEPARTAMENTO,	LOCALIZACION)
+			   values('PEPE',	 'SALESMAN',   7000,				null		);
+
+		-- Modifica el nombre de los empleados, añadiéndoles el sufijo ‘(NY)’.
+update nombres3
+    set nombre=concat(nombre, '(NY)');
+		-- Elimina a todos los empleados menos al presidente
+delete from nombres3
+where puesto != 'president';
+
+-- 9 Crea una vista llamada NOMBRES4 con los totales de salario por departamento. 
+
+create view NOMBRES4
+as
+select sum(sal)"Suma de salarios" from emp;
+select * from NOMBRES4;
+
+-- 10 Busca las vistas creadas en el diccionario de datos.
+select * 
+from user_catalog
+where table_type like 'VIEW';
+
+
+-- Tablas PERSONAL, PROFESORES Y CENTROS (TABLAS_DDL_2.sql)
+
+-- 11 Crea una vista que se llame CONSERJES que contenga el nombre del centro y el nombre de sus conserjes.
+
+create or replace view CONSERJES
+as
+select distinct centros.nombre, substr(personal.apellidos, instr(personal.apellidos, ',')+2) "Nombre", personal.funcion
+from centros,personal
+where personal.funcion like 'CONSERJE';
+
+
+select * from conserjes;
+
+-- 12 Crea un sinónimo llamado CONSER asociado a la vista creada antes.
+
+create synonym conser for conserjes;
+
+-- 13 Añade a la tabla PROFESORES una columna llamada COD_ASIG con dos posiciones numéricas
+alter table profesores
+
+add(
+    COD_ASIG	NUMBER(2)
+);
+desc profesores;
+
+-- 14 Crea la tabla TASIG con las siguientes columnas: COD_ASIG numérico de 2 posiciones y NOM_ASIG 
+--    cadena de 20 caracteres
+
+create table TASIG(
+    COD_ASIG	NUMBER(2),
+    NOM_ASIG	VARCHAR2(20)
+);
+desc tasig;
+
+-- 15 Añade la restricción de clave primaria a la columna COD_ASIG de la tabla TASIG
+
+alter table tasig
+add constraint PK_TASIG_COD_ASIG PRIMARY KEY (COD_ASIG);
+
+-- 16 Añade la restricción de clave foránea a la columna COD_ASIG de la tabla PROFESORES. Visualiza el 
+--   nombre de las restricciones y las columnas afectadas para las tablas TASIG y PROFESORES
+
+alter table profesores
+add constraint FK_profesores_COD_ASIG FOREIGN KEY (COD_ASIG);
+
+-- Base de datos EMPRESA
+-- 17 Se considera que la tabla PRODUCTOS sufre pocas operaciones de alta de nuevos registros o eliminación 
+-- de registros, y el único campo que sufre actualizaciones frecuentes es el campo EXISTENCIAS. Por otro 
+-- lado, es frecuente consultar los productos por el campo DESCRIPCION (aunque varios productos puedan 
+-- tener la misma descripción). ¿Se podría mejorar la base de datos? Si es así, indica de qué forma y escribe 
+-- la instrucción correspondiente. En cualquier caso justifica la respuesta
+Que te den los datos en el minimo tiempo posible (mejora de rendimiento)
+
+-- 18  ¿Qué se puede hacer para que no puedan existir en la tabla de CLIENTES dos clientes con el mismo 
+nombre?
+
+Se podria hacer realizando una restriccion UNIQUE
+
+    -- 19  En nuestro sistema vamos a efectuar muchas consultas recuperando a la vez los pedidos y los productos 
+asociados a cada uno de ellos. Escribe la sentencia SQL correspondiente para optimizar la base de datos.
+    
+-- 20  Ahora queremos permitir que dos clientes tengan el mismo nombre.
+
+Se eliminaria la reestriccion
+
+-- 22  Escribe las sentencias SQL que muestren los índices de cada tabla y el tamaño que ocupan.
+
+select * from user_indexes;
+select * from user_views;

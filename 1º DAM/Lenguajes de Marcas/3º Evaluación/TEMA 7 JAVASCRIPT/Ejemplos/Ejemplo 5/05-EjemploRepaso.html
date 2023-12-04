@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <script>
+        window.onload = function() {
+            document.getElementById("casilla").value = "33";
+            document.getElementById("button").onclick = pulsarBoton;
+            document.getElementById("parrafo").onmouseover = cambiarColor;
+            document.getElementById("parrafo").onmouseout = cambiarColor;
+        }
+        
+        function pulsarBoton(evento) {
+            alert(evento.target.value);
+            console.log(evento.target.id + " executed");
+        }
+        
+        function cambiarColor(evento) {
+            console.log(evento);
+            if (evento.type == "mouseover") {
+                evento.target.style.backgroundColor = "green";
+            } else {
+                evento.target.style.backgroundColor = "white";
+            }
+        }
+    </script>
+</head>
+<body>
+    Casilla: <input type="text" id="casilla"/>
+    
+    <button id="button" value="Hola">Hola</button>
+    
+    <p id="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit incidunt consequatur illo, laboriosam quas accusamus numquam dicta, obcaecati adipisci quo sequi tempora! Ipsa eum possimus, ullam obcaecati alias ducimus ex incidunt itaque, nemo explicabo libero? Laborum atque alias dolores ipsa expedita maiores inventore sed, corporis doloribus harum, quisquam at libero aspernatur numquam dolor, illo. Sed, expedita soluta totam id, asperiores, quas quos ea exercitationem ad quae quam voluptatum. Facilis eveniet fugiat veritatis nisi voluptas blanditiis modi non, alias, necessitatibus consequuntur inventore aliquid quod est voluptatem, eligendi, eius aliquam harum! Delectus nesciunt, eos molestias quis quam. Nesciunt necessitatibus at harum est non ex quaerat omnis, nemo, eos repellat, alias atque perferendis eaque dolores iusto, id nihil natus consequuntur quia quasi nisi quae culpa doloremque velit. Magnam, illo quasi voluptatem harum enim in, voluptatum! Cupiditate veniam ex libero exercitationem ab at commodi temporibus dignissimos! Nulla nostrum numquam dicta esse rem, sequi facere porro quisquam eveniet. Voluptate id adipisci, eius hic, minus cumque fugit numquam iusto veritatis vitae consectetur aliquam officia praesentium sit, ea sed voluptatem laborum! Modi nam aspernatur perferendis, facilis cumque harum est iure qui, mollitia odio dolor quas nisi maxime ipsum quaerat quidem sapiente molestias, porro ullam esse corporis veniam, assumenda iste neque! Doloribus omnis quidem provident, iure ipsam quis. Nam, itaque, hic. Molestiae ipsam quos facere, nemo ipsa illum, aspernatur architecto magnam fuga pariatur provident iusto unde, soluta inventore. Ipsum, optio rerum debitis libero, alias sunt perspiciatis consequuntur accusamus, laudantium odio incidunt error atque quisquam. Eaque nihil praesentium optio eius, illo, tempore nemo labore voluptatum ab laborum illum officiis soluta? Placeat eum aspernatur, magnam iure, eligendi quos aliquid numquam. Consequuntur provident hic quas doloribus incidunt, eum dignissimos perferendis? Architecto, voluptas incidunt atque accusantium similique magnam veritatis suscipit dolorum tempore eligendi quam laboriosam dolor nulla dolore natus quasi aliquid, pariatur!</p>
+    
+</body>
+</html>

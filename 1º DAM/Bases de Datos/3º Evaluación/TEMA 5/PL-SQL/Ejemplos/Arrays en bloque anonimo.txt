@@ -1,0 +1,12 @@
+/*Arrays en un bloque anonimo en el que  */
+
+declare
+    type array_alturas is table of number; --Declaración de array de reales
+    v_array		 array_alturas  := array_alturas(152,54); --Declaracion de variable para acceder al array
+begin
+    --llenamos el array (Estan basados en 1 y no en 0, para saber el numero de elementos es con count(array_alturas))
+
+    --v_array(1):=152;
+    --v_array(2):=54;
+dbms_output.put_line(v_array(1)); --Saca la posicion 2
+end;

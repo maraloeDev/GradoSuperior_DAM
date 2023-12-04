@@ -1,0 +1,46 @@
+1- //calificaciones/alumno[number(nota) > avg(//calificaciones/alumno[carrera='Físicas']/nota)]/nombre
+1B-
+concat('Repetidores: ', count(//alumno[@tipo='repetidor']), ' No repetidores: ', count(//alumno[@tipo='no repetidor']))
+1C-
+//alumno/concat(upper-case(nombre), "-",nota ,'-', max(//nota), ' - ', min(//nota))
+2.1-
+for $carreras in distinct-values(//carrera)
+return concat($carreras, "-", avg(//alumno[carrera= $carreras]/nota))
+
+o
+
+for $carreras in distinct-values(//carrera)
+let $media:=avg(//alumno[carrera= $carreras]/nota)
+return concat($carreras, "-", $media)
+
+2.2-
+for $alum in //alumno
+let $nombre:= ( $alum/nombre), $repite := $alum/@tipo
+order by $nombre
+return if ($repite='repetidor')
+then
+<alumno>{$nombre}
+<repite>Si</repite></alumno>
+else(
+  <alumno>{$nombre}
+<repite>No</repite></alumno>
+)
+2.3
+for  $materia in distinct-values(//materia)
+let $notaMax := max(//alumno[materia = $materia]/nota)
+let $notaMin := min(//alumno[materia = $materia]/nota)
+return
+  <asignatura>
+    <nombre>{$materia}</nombre>
+    <nota_maxima>{$notaMax}</nota_maxima>
+    <nota_minima>{$notaMin}</nota_minima>
+  </asignatura>
+2.4
+for  $carrera in distinct-values(//carrera)
+let $materia := (//alumno[carrera = $carrera]/materia)
+return
+<carreras>
+  <carrera>{data($carrera)} </carrera>
+  <Materias>{data($materia)}</Materias>
+</carreras>
+   

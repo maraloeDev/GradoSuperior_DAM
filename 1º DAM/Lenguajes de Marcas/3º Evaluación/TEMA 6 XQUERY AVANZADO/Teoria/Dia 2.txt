@@ -1,0 +1,10 @@
+Inserciones, modificaciones y borrados en exist DB se meten en el return del xquery
+
+Se puede hacer tambien en el XPath 
+
+Insert, son las inserciones, la sintaxis es 
+
+update insert ELEMENTO into EXPRESION  dentro de...
+update insert ELEMENTO following EXPRESION  despues de...
+update insert ELEMENTO preceding EXPRESION antes de...
+update insert attribute ELEMENTO into EXPRESION esto sirve para una atributo

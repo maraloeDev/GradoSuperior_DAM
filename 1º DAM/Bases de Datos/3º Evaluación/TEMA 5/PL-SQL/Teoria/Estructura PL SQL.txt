@@ -1,0 +1,191 @@
+PL/SQL: que puede realizar procedimientos y funciones. Se almacena en la base de datos y se ejecuta en el servidor.
+
+Bloques anomimo: la estructura basica de PL/SQL son bloques.
+
+Estructura basica de un bloque PL/SQL (Esta tiene alguna similitud con la estructura de Java):
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+declare //Aqui declaramos las variables que usaremos. Podemos usar todos los datos de oracle mas el boolean. Las variables no inicializadas equivalen a NULL.
+	--opcional: declaracion de variables
+	v_hoy	varchar2(10);
+	bandera boolean = true; --Se le puede asignar un valor inicial a la variable
+
+begin //Contiene las partes ejecutables.
+	--obligatoria: area ejecutable
+	select sysdate into v_hoy from dual;	
+	--visualizar
+	dbms_output.put_line('Hoy es: ' || v_hoy); --usamos esta estructura para imprimir por pantalla 
+
+	if bandera = true then
+        dbms_output.put_line('Si');
+	else
+        dbms_output.put_line('No');
+	end if;
+
+exception //Aqui manejaremos las excepciones
+	--opcional: manejadores de excepciones
+	when others then dbms_output.put_line('Error');
+
+end; //Finalizacion de ejecución
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bloque anonimo de declaracion de variables y constantes:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+declare
+	v_nombre		char(20) := 'Eduardo';
+	v_apellidos		varchar(50) default 'Martín-Sonseca'; --valor por defecto
+	v_edad			integer not null := 0; --valor inicial obligatorio
+	v_salario		number(7,2);
+	iva			constant number := 0.21; --valor statico, no se puede cambiar
+	v_puesto		scot.emp.job%type; --declarar una variable de columna de una tabla
+	reg_emp			scott.emp%rowtype; --acceder a las culumnas del registro
+begin
+	dbms_output.put_line(v_nombre);
+	dbms_output.put_line(v_apellidos);
+	dbms_output.put_line(v_edad);
+	dbms_output.put_line('Salario: ' || v_salario);
+	dbms_output.put_line(iva);
+
+	select emp.job into v_puesto from scott.emp where emp.empno=7369;
+	dbms_output.put_line(v_puesto);
+
+exception
+	when too_many_rows then dbms_output.put_line('Demasiadas filas');
+	when no_data_found then dbms_output.put_line('No se encuentran datos');
+
+end;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Operadores:
+-Asignación:  :=
+-Logicos:   and, or, not
+-Comparación:  >, <, >=, <=, =, !=
+-Funciones: todas las funciones usadas en oracle tambien son utilizables.
+
+Bloque anonimo sintaxis if:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+Sintaxis:
+
+if condicion then
+
+else
+
+end if;
+_____________________________________
+
+if condicion1 then
+
+elsif condicion2 then
+
+elsif condicion3 then
+
+else
+
+end if;
+*/
+select * from scott.emp;
+--Mostrar el sueldo final (salario + comisiones) del 'president';
+
+declare
+	v_sal	scott.emp.sal%type;
+	v_comm	scott.emp.comm%type;
+    	v_final	number;
+
+begin
+	select emp.sal, emp.comm into v_sal, v_comm from scott.emp where upper(emp.job) like 'PRESIDENT'; --Selecionamos todos los salarios y comisiones de los presidentes
+	if v_comm is null then
+        v_final := v_sal;
+	else
+        v_final := v_sal + v_comm;
+	end if;
+	
+	dbms_output.put_line('Salario final: ' || v_final);
+
+end;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bloque anonimo con els if:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Mostrar por consola el nombre del departamento (en español) ubicado en CHICAGO.
+
+declare
+	v_departamento_EN	scott.emp.dname%type;
+	v_departamento_ES	v_departamento_EN%type;
+
+begin
+	select dept.dname into v_departamento_EN from scott.dept where upper(loc) like 'CHICAGO';
+
+	if v_departamento_EN = 'ACCOUNTING' then
+		v_departamento_ES := 'CONTABLILIDAD';
+
+    	else if v_departamento_EN = 'RESEARCH' then
+		v_departamento_ES := 'I+D';
+
+    	else if v_departamento_EN = 'SALES' then
+		v_departamento_ES := 'VENTAS';
+
+    	else if v_departamento_EN = 'OPERATIONS' then
+		v_departamento_ES := 'OPERACIONES';
+
+	else
+        	v_departamento_ES := 'OTRO';
+
+	end if
+
+	dbms_output.put_line(v_departamento_ES);
+
+end;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Estructura case:
+
+case <expresion>
+	when valor1 then
+	when valor2 then
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+declare
+	v_deptno	scott.dept.deptno%type;
+	v_dname		scott.dept.dname%type;
+	v_loc		scott.dept.loc%type;
+
+begin
+	select dept.deptno, dept.loc, case dept.dname
+		when 'ACCOUNTING' then 'CONTABILIDAD'
+        	when 'RESEARCH' then 'I+D'
+        	when 'SALES' then 'VENTAS'
+        	when 'OPERATIONS' then 'OPERACIONES'
+        	else 'OTRO'
+	end case
+	into v_deptno, v_loc, v_dname from scott.dept;
+end;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--Bloque anonimo : ejemplo bucles
+--Bucle que muestre los numeros enteros entre 1 y 100
+declare
+i integer;
+   
+begin
+--Bucle while
+    i:=1;
+while i<11
+    loop
+        dbms_output.put_line(i);
+i:=i+1;
+exit when i>10;
+end loop;
+
+--Bucle for
+for i in 1..10 -- for i in reverse 1..10
+    loop
+        dbms_output.put_line(i);
+end loop;
+       
+end;

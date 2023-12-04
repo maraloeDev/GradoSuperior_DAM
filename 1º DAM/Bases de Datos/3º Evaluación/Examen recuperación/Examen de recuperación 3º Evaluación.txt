@@ -1,0 +1,63 @@
+-- Ejercicio 1. - DDL (10 ptos.) Dado el siguiente esquema relacional, escribe las instrucciones
+-- SQL necesarias para crear las tablas
+
+DROP TABLE A;
+DROP TABLE B;
+create table A(
+    a1		NUMBER(3)		PRIMARY KEY,
+    A_a1	NUMBER(3),
+    b1		VARCHAR2(5),
+    b2		NUMBER(2),
+    a2		DATE			DEFAULT(SYSDATE),
+    a3		NUMBER(8,2)		CHECK(a3 > 0)
+);
+
+create table B(
+    b1		VARCHAR2(5),
+    b2		NUMBER(2),
+    a1		NUMBER(3),
+	b3		VARCHAR(2)		CHECK ( b3 IN ('Valor1', 'Valor2')),
+    constraint	PKb1b2	PRIMARY KEY(b1,b2)
+);
+
+alter table A /* A1 = a_A1*/
+add constraint FK1	FOREIGN KEY	(A_a1) REFERENCES A (a1);
+
+alter table A /* b1=b1    b2 = b2*/
+add constraint FK2 FOREIGN KEY (b1,b2) REFERENCES B (b1,b2) ON DELETE CASCADE;
+
+alter table B /* a1 = a1*/
+add constraint FK3 FOREIGN KEY (a1) REFERENCES A (a1) ON DELETE CASCADE;
+
+-- b) Modificaciones:
+-- • (0,5 ptos.) Modifica la columna b3 de la tabla B para que pueda almacenar cadenas
+-- de como máximo 6 caracteres.
+alter table B
+modify (
+    b3	VARCHAR2(6)
+);
+desc B;
+-- • (0,5 ptos.) Haz que la columna a2 de la tabla A almacene valores únicos.
+alter table A
+add constraint u_a2 UNIQUE(a2);
+desc A;
+
+-- c) Comprobaciones:
+-- • (0,5 ptos.) Muestra el tablespace en el que se han creado las tablas .
+select * from user_tables;
+-- • (0,5 ptos.) Muestra las restricciones creadas en las tablas.
+select CONSTRAINT_NAME, TABLE_NAME from user_constraints where TABLE_NAME like'A'or TABLE_NAME like 'B';
+
+-- d) (1 pto.) Haz que la columna a1 sea autonumérica (con incremento de uno en uno,
+-- empezando por el valor 1).
+
+create sequence autoincrementoA1 start with 1 minvalue 0 order;
+
+insert into A(a1) values(autoincrementoA1.nextval);
+
+-- e) (1 pto.) Indexa la tabla B por la columna a1, a continuación, muestra los índices de las
+-- tablas.
+create index fk_a1
+on b(a1);
+
+select * from user_indexes

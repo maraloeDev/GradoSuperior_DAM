@@ -1,0 +1,84 @@
+--LUCÍA 
+declare
+  v_deptnoProv number := 50;
+  v_num_empleados number;
+begin
+insert into depart (dept_no, dnombre, loc)
+select v_deptnoProv, dnombre, loc from depart where dept_no = 20;
+update emple
+    set dept_no = v_deptnoProv
+    where dept_no = 20;
+v_num_empleados := SQL%ROWCOUNT;  
+delete from depart where dept_no = 20;  
+  dbms_output.put_line('Departamento Borrado');
+  dbms_output.put_line('Empleados afectados: ' || v_num_empleados);
+end;
+
+--NOEL
+declare
+	v_newsalario datos.salario%type;	--el salario que se actualiza
+begin
+	for	e in (select * from datos)
+	loop
+    	v_newsalario := e.salario;
+    	if e.puesto like 'PRESIDENTE' then
+            v_newsalario := v_newsalario + 30;
+		end if;
+		case e.empl
+		when 0 then
+            v_newsalario := v_newsalario + 50;
+		when 1 then
+            v_newsalario := v_newsalario + 80;
+		when 2 then
+            v_newsalario := v_newsalario + 100;
+		else
+        	v_newsalario := v_newsalario + 110;
+		end case;
+		update emple
+        set salario = v_newsalario
+        where emp_no = e.num;
+    end loop;
+end;
+--LUCÍA
+declare
+    total_ganancias number := 0;
+    num_empleados number := 0;
+begin
+    for emp in (select salario, comision from emple)
+    loop
+        total_ganancias := total_ganancias + emp.salario + nvl(emp.comision , 0);
+        if emp.salario > 2000 then
+            num_empleados := num_empleados + 1;
+        end if;
+    end loop;
+	dbms_output.put_line('Total ganancias: ' || total_ganancias || '€');
+	dbms_output.put_line('Empleados con un salario mayor a 2000: ' || num_empleados || ' empleados');
+end;
+
+--NOEL
+drop table datos;
+create table datos(
+    num	number(4,0)
+);
+
+insert into datos values(7839);
+
+select * from datos;
+
+declare 
+	v_num		number;
+	v_salario 	number;
+begin
+	select * into v_num from datos;
+	select salario into v_salario from emple where emp_no = v_num;
+	dbms_output.put_line('SALARIO ANTES: ' || v_salario);
+	v_salario := v_salario + (v_salario*0.10);
+	update emple
+        set salario = v_salario
+        where emp_no = v_num;
+	dbms_output.put_line('SALARIO DESPUES: ' || v_salario);
+exception
+    when no_data_found then dbms_output.put_line('ERROR. No data.');
+	when too_many_rows then dbms_output.put_line('ERROR. Muchas filas.');
+end;
+

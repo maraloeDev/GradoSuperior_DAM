@@ -1,0 +1,35 @@
+Ejercicio 4. (0,5 puntos)
+Muestra cuántos no repetidores hay
+
+count(//alumno[@tipo="no repetidor"])
+
+Ejercicio 5. (1 puntos)
+Sustituye el texto ADE por Administración y dirección de empresas en aquellos
+alumnos que tienen la asignatura de Contabilidad.
+for $materia in //alumno
+let $carrera := $materia [contains(materia, 'Contabilidad')]/carrera
+return update value $carrera with 'Administración y dirección de empresas'
+
+Ejercicio 6. (1puntos)
+Inserta un nuevo campo dentro de cada alumno con la media global de todos los
+alumnos.
+
+for $NotaAlumnos in //alumno/nota
+let $mediaGlobal := avg($NotaAlumnos)
+return update insert <MediaGlobal>{$mediaGlobal}</MediaGlobal> into $NotaAlumnos
+
+Ejercicio 7. (1puntos)
+Cuenta y muestra cuántos repetidores hay pero dentro de cada carrera.
+
+for $alumnos in //alumno[@tipo="repetidor"]
+let $carrera := $alumnos/carrera
+return concat('El numero de repetidores que hay dentro de cada carrera son' , ' ' ,count($carrera), 
+' y la asignatura que ha repetido es ', ' ',$carrera  )
+
+Ejercicio 8. (0,5 puntos)
+Borra aquellos nodos carrera cuyo valor es ADE (o Administración y dirección de
+empresas según lo modificado en el apartado 5)
+
+for $materia in //alumno
+let $carrera := $materia [contains(carrera, 'Administración y dirección de empresas')]
+return update delete $carrera

@@ -1,0 +1,17 @@
+1 Guardar las URLS
+2 buscar imagenes para las vistas
+
+Juegos
+
+1 (8) 2 random se dan, para colocarlas en el mapa
+Nombre de la obra original
+Autor
+URL 
+
+2
+Nombre del Museo 3 verdaderos  y 7 falsos(1 imagen que sea museo verdadero)
+
+3
+Elegir 6 obras famosas de Gregorio Fernandez y decir verdadero o falso (misma tematica)
+
+4

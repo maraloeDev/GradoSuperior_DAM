@@ -1,0 +1,17 @@
+$#
+Devuelve el numero de elementos
+
+$@
+Recorre en uno en uno
+entre comillas, identifica los valores 	que estan entre comillas
+
+
+
+*
+Es una separacion de campos
+
+En los argumentos hay espacios
+
+$* 
+devuelve todos los datos de la variable
+

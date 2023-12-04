@@ -1,0 +1,79 @@
+-- 1. (0,5 ptos.) Muestra las asignaturas que contengan tres letras "o" y tengan alumnos matriculados
+-- de "Madrid".
+select * from asignaturas;
+select * from alumnos;
+
+select distinct asignaturas.nombre, alumnos.apenom, alumnos.pobla
+from asignaturas, alumnos
+where alumnos.pobla like 'Madrid'
+and asignaturas.nombre like '%o%o%o%';
+
+-- 2. (1 pto.) Muestra los nombres de los alumnos de "Madrid" con alguna asignatura suspensa.
+-- Resuelve la consulta de 2 formas diferentes.
+
+	--1
+select distinct asignaturas.nombre, alumnos.pobla,  notas.nota
+from asignaturas, alumnos,notas
+where alumnos.pobla like 'Madrid'
+and notas.nota <5;
+
+	--2
+    select distinct asignaturas.nombre, alumnos.pobla,  notas.nota
+    from asignaturas, alumnos,notas
+    where notas.dni = alumnos.dni and alumnos.pobla like 'Madrid'
+    and notas.nota <5;
+
+-- 3. (0,5 ptos.) Muestra los nombres de los alumnos con una nota entre 7 y 8 en la asignatura de
+-- "FOL".
+
+select alumnos.apenom, asignaturas.nombre, notas.nota
+from alumnos, asignaturas, notas
+where notas.dni = alumnos.dni
+and asignaturas.nombre 
+like 'FOL' 
+and notas.nota between 7 and 8;
+
+-- 4. (1 pto.) Crea una tabla llama APROBADOS, con el DNI, nombre y apellidos (en dos columnas
+-- diferentes), de los alumnos que han obtenido al menos 5 puntos de alguna asignatura.
+create table APROBADOS(
+
+    DNI				number(10),
+    nombre			varchar2(100),
+    apellidos		varchar2(100)
+);
+
+insert into APROBADOS(
+select alumnos.dni, substr(alumnos.apenom,13,instr(alumnos.apenom, ',')) "NOMBRE", substr(alumnos.apenom,1,instr(alumnos.apenom, ', ')) "APELLIDOS"
+from alumnos, notas
+where alumnos.dni = notas.dni and notas.nota =5
+);
+select * from APROBADOS;
+
+-- 4. (1 pto.) Muestra por cada centro y en cada especialidad el número de profesores. Si el centro
+-- no tiene profesores, debe aparecer un 0 como número de profesores. Las columnas a visualizar
+-- son: nombre del centro, especialidad y número de profesores.
+
+select distinct centros.nombre "NOMBRE DEL CENTRO", profesores.especialidad, count(profesores.apellidos) "NUMERO DE PROFESORES"
+from centros,profesores
+where profesores.cod_centro = centros.cod_centro(+)
+group by centros.nombre,profesores.especialidad;
+select * from notas;
+
+--5. (1pto.) Muestra la especialidad con menos profesores.
+
+--6. (1 pto.) Actualiza el nº de plazas a la mitad, de los centros con un nº de plazas inferior al
+promedio de plazas de todos los centros
+UPDATE centros 
+SET num_plazas = num_plazas / 2 
+WHERE num_plazas < (SELECT AVG(num_plazas) FROM centros);
+
+-- 7. (1 pto.) Elimina el banco con más sucursales.
+
+-- 8. (1 pto.) Muestra el saldo de los bancos de 'GUADALAJARA', visualizando una fila por cada
+-- banco con las siguientes columnas: nombre del banco, saldo debe y saldo haber.
+
+select bancos.nombre_banc "NOMBRE DEL BANCO", sum(cuentas.saldo_debe + cuentas.saldo_haber) "SALDO DEBE Y SALDO HABER"
+from cuentas, bancos
+where cuentas.cod_banco = bancos.cod_banco
+and bancos.nombre_banc like '%GUADALAJARA%'
+group by bancos.nombre_banc;

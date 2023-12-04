@@ -1,0 +1,148 @@
+1.- 
+
+for $producto in distinct-values(//produc/cod_zona)
+return count(//produc[cod_zona=$producto])
+
+opcion 2:
+
+for $zona in distinct-values(/productos/produc/cod_zona) 
+let $cu:=count(/productos/produc[cod_zona =$zona])
+return concat('zona ', $zona, ' productos ', $cu)
+
+
+2.- 
+
+for $producto in //produc/cod_zona
+return if($producto=10) then <zona10>{data($producto/../denominacion)}</zona10>
+else if($producto=20) then <zona20>{data($producto/../denominacion)}</zona20>
+else if($producto=30) then <zona30>{data($producto/../denominacion)}</zona30>
+else if($producto=40) then <zona40>{data($producto/../denominacion)}</zona40>
+
+
+opción 2
+
+for $den in /productos/produc/denominacion
+let $zona:=distinct-values(/productos/produc[denominacion=$den]/cod_zona)
+return concat('<zona ', $zona, '>', $den, '</zona ', $zona, '>')
+
+
+3.-
+Esta opción es válida si no hay productos que coincida que tienen el valor máximo de precio:
+for $max in distinct-values(//produc/cod_zona)
+let $preciomayor := max(//produc[cod_zona = $max]/precio)
+let $den := //produc[precio = $preciomayor and cod_zona=$max]/denominacion
+return concat("Prod. mas caro de la zona ",$max, ' es: ',$den,' cuesta: ',$preciomayor,'€')
+
+si hay varios productos con precio máximo:
+
+
+for $zonas in distinct-values(//cod_zona)
+let $preciomax:=max(//produc[cod_zona=$zonas]/precio)
+return <nombre_max>{data(//produc[precio=$preciomax and cod_zona=$zonas]/denominacion)}</nombre_max>
+
+Opción avanzada:
+for $zona in distinct-values(//cod_zona)
+for $producto in //produc[cod_zona=$zona]
+return if ($producto/precio=max(//produc[cod_zona=$zona]/precio))
+then concat($producto/cod_zona,' - ',$producto/denominacion)
+else ()
+
+
+4.-
+
+for $tipo in(//produc/denominacion)
+return if(//produc[contains($tipo, 'Placa Base')]/denominacion)
+ then <Placa>{data($tipo)}</Placa>
+ else if(//produc[contains($tipo, 'Memoria')]/denominacion)
+ then <Memoria>{data($tipo)}</Memoria>
+ else if(//produc[contains($tipo, 'Micro')]/denominacion)
+ then <Micro>{data($tipo)}</Micro>
+ else ( <Otros>{data($tipo)}</Otros>) 
+
+otra opción:
+
+for $den in /productos/produc/denominacion
+return if(starts-with($den, 'Placa Base'))
+	then <placa>{data($den)}</placa>
+	else if(starts-with($den, 'Memoria'))
+	then <memoria>{data($den)}</memoria>
+	else if(starts-with($den, 'Micro'))
+	then <micro>{data($den)}</micro>
+	else <otros>{data($den)}</otros>
+
+5.-
+
+for $cod in //sucursal/@codigo
+let $cuentaAhorro :=(//sucursal[@codigo=$cod]/count(cuenta[@tipo='AHORRO']))
+let $cuentaPensiones :=  (//sucursal[@codigo=$cod]/count(cuenta[@tipo='PENSIONES']))
+return concat($cod, ' Cuenta Ahorro: ',$cuentaAhorro, ' Cuenta Pensiones: ',$cuentaPensiones)
+
+opción 2
+
+for $cod in //sucursal
+let $cuentaAhorro :=($cod/count(cuenta[@tipo='AHORRO']))
+let $cuentaPensiones :=  ($cod/count(cuenta[@tipo='PENSIONES']))
+return concat($cod/@codigo, ' Cuenta Ahorro: ',$cuentaAhorro, ' Cuenta Pensiones: ',$cuentaPensiones)
+
+
+6.- 
+
+for $cod in //sucursal
+let $dir :=($cod/director) , $pob :=  ($cod/poblacion)
+let $sumDebe := sum($cod/cuenta/saldodebe)
+let $sumHaber := sum($cod/cuenta/saldohaber)
+return concat($cod/@codigo, ', Director: ',$dir, ', Poblacion: ',$pob, ', Suma total debe: ', $sumDebe,' Suma total haber: ',$sumHaber)
+
+
+
+7.- 
+
+for $cod in //sucursal
+let $dir :=($cod/director)
+let $pob :=  ($cod/poblacion)
+where count($cod/cuenta) >3
+return concat($cod/@codigo, ', Director: ',$dir, ', Poblacion: ',$pob)
+
+
+opción 2
+
+
+for $sucursal in //sucursal
+let $director:=$sucursal/director,$codigo:=$sucursal/@codigo ,$poblacion:=$sucursal/poblacion, $cuentas:=count($sucursal/cuenta)
+return if($cuentas  >3)
+then concat("Codigo: ", $codigo ," - Director: ", $director, " - Poblacion: ", $poblacion)
+
+8.-
+
+Sólo funcionaría si no hay varios saldos debe iguales:
+
+for $cod in //sucursal/@codigo
+let $dir :=(//sucursal[@codigo=$cod]/director)
+let $MasDebe :=  max( (//sucursal[@codigo=$cod]/cuenta/saldodebe))
+let $info := (//sucursal[@codigo=$cod]/cuenta[saldodebe = $MasDebe])
+return concat($cod, ', Director: ',$dir, $info)
+
+
+Funcionaría en cualquier caso:
+
+for $sucursal in //sucursal
+let $max := $sucursal/cuenta[saldodebe=max($sucursal/cuenta/saldodebe)]
+return 
+<sucursal>
+  <codigo>{data($sucursal/@codigo)}</codigo>
+  {$max}
+</sucursal>
+
+
+
+9.- 
+
+for $cuentaP in //cuenta[@tipo='PENSIONES']
+ let $maxAp:=max(//cuenta[@tipo='PENSIONES']/aportacion)
+return if ($cuentaP/aportacion=$maxAp) then
+$cuentaP
+else ()
+
+
+
+

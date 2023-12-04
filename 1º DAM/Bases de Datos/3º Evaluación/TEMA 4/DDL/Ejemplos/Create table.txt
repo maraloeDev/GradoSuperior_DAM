@@ -1,0 +1,166 @@
+select * from user_tables;
+select * from user_constraints;
+-- Tabla de ejemplo
+
+drop table provincias;
+create table PROVINCIAS(
+Codigo					number(2) constraint pk_provincias primary key, 
+nombre					varchar2(100) constraint nombre_obligatorio not null
+);
+select * from provincias;
+
+
+
+--drop table empleados;
+select * from empleados;
+select * from provincias;
+
+create table empleados (
+    id_empleado integer,
+    nombre varchar2(50),
+    dni varchar2(9),
+    edad integer,
+    fecha_nac date,
+    cod_provincia number(2),
+    constraint pk_empl primary key(id_empleado),
+    constraint dni_unico unique(dni),
+    constraint nombre_oblig check(nombre is not null),
+    constraint edad_posit check(edad > 0),
+    constraint fk_empl_prov foreign key(cod_provincia) references provincias(codigo) on delete cascade
+);
+
+insert into provincias (47, 'Valladolid');
+insert into empleados (1, null, 'Empleado1', 25, '01-JAN-2020', 47);
+
+delete from provincias where codigo = 47;
+
+
+drop table alumnos;
+create table alumnos(
+    num_matricula varchar2(5) constraint pk_alumnos primary key,
+    fecha_matricula date default sysdate,
+    calificacion char(1) constraint valores_calificacion check(calificacion in ('A', 'N')),
+    nombre varchar2(100) constraint nombre_upper check (nombre = upper(nombre))
+);
+
+insert into alumnos (num_matricula, calificacion) values ('23/00', 'N');
+
+select * from alumnos;
+
+dia 2
+
+select * from user_tables;
+select * from  ;
+
+
+select * from user_tables;
+select * from  ;
+
+
+-- creacion de tablas von reestricciones y relacion
+
+create table FABRICANTES(
+    cod_fabricante		number(3)		constraint pk_fabricante primary key,
+    nombre_fabricante	varchar2(50)	constraint nombre_mayus		check(nombre_fabricante = upper(nombre_fabricante)),
+    pais_fabricante		varchar2(30)
+);
+
+
+create table articulos (
+    cod_art		 varchar2(10),
+    cod_fab 	 number(3),
+    categoria 		 varchar2(10),
+    peso		 number(3),
+    pvp 		 number,
+    precio_coste 	 number,
+    existencias  Integer,
+    constraint pk_articulos primary key(cod_art, cod_fab, categoria),
+    constraint valor_categoria check(categoria in ('Primera', 'Segunda', 'Tercera')),
+    constraint precio_coste_positivo	check(precio_coste>0)	
+);
+
+-- Modificacion columnas
+
+-- 1 Añadir columnas a la tabla fabricantes
+
+alter table fabricantes
+add(
+
+    email		varchar2(50),
+    telefono	varchar2(9)
+);
+
+-- 2 Modificar columnas en la tabla fabricantes el email
+
+alter table fabricantes
+modify
+email	varchar2(30);
+
+insert into fabricantes values(111,'Fabricante 1','España','fabricante1@gmail.com', null);
+insert into fabricantes values(112,'Fabricante 2','España','fabricante2@gmail.com', null);
+
+--Mail y telefono obligatorios
+
+alter table fabricantes
+
+	modify(
+    email		NOT NULL,
+    telefono	NOT NULL
+    );
+
+-- ERROR SOLUCION
+
+update fabricantes
+set email = 'temporal1' where email is null;
+
+update fabricantes
+set telefono = 'temporal1' where telefono is null;
+
+-- eliminar columnas
+
+alter table fabricantes
+drop column telefono;
+
+select * from fabricantes;
+select * from articulos;
+drop table fabricantes;
+
+-- 4 Añadir reestricciones
+
+alter table articulos
+add constraint fk_articulo_fab foreign key(cod_fab)
+references fabricantes(cod_fab);
+
+alter table articulos
+add constraint existencias_positivas check(existencias>0);
+
+alter table articulos
+disable constraint fk_articulo_fab;
+
+select * from user_constraint where table_name like 'articulos';
+
+alter table articulos
+drop constraint existencias_positivas;
+
+-- 5 borrado de tablas
+desc articulos 
+
+insert into articulos values( 'ARTICULO1', 222, 'Tercera', null,null,null,null);
+
+drop table fabricantes; 
+-- 5 borrado de tablas
+desc articulos 
+
+insert into articulos values( 'ARTICULO1', 222, 'Tercera', null,null,null,null);
+
+drop table fabricantes;
+
+--creacion de indices
+
+create index idx_pvp on articulos(pvp)
+
+ALTER index idx_pvp monitoring uage;
+
+
+    );
+

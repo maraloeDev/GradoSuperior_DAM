@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function ()
+        {
+            celdas=document.getElementsByTagName("td")
+            for(i=0;i<celdas.length;i++)
+            {
+                celdas[i].setAttribute("bgcolor","blue")
+                //celdas[i].value="Celda"+i
+                celdas[i].innerHTML=i
+                celdas[i].onmouseover=cambiarColor
+                celdas[i].onmouseout=cambiarColor2
+                //celdas[i].style.backgroundColor = "green"
+            }
+            document.getElementById("casilla").value="NUEVO VALOR"
+            
+        }   
+        function cambiarColor(evento){
+            {
+                evento.target.style.background="white"
+            }
+        }     
+        function cambiarColor(evento){
+            {
+                evento.target.style.background="white"
+            }
+        }     
+        function cambiarColor2(){
+            {
+               this.style.background="green"
+            }
+        }     
+    </script>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <input type="text" id="casilla" value="33"></input>
+</body>
+</html>

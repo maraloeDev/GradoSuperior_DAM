@@ -1,0 +1,5 @@
+Consultas
+
+Sentencia JOIN
+Consultas agrupadas
+Sintaxis UPDATE y DELETE

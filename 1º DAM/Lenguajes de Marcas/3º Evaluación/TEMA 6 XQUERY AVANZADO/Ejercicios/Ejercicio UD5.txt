@@ -1,0 +1,3 @@
+Utiliza el documento sucursales.xml para realizar las siguientes consultas XQuery:
+• Obtén por cada sucursal el mayor saldo haber y el nombre de la cuenta que tiene ese saldo.
+

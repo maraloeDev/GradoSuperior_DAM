@@ -1,0 +1,118 @@
+-- 30 ¿Cuáles son las cuotas asignadas mínima y máxima?
+select max(repventas.cuota) "CUOTA MAXIMA", min(repventas.cuota) "CUOTA MINIMA"
+from repventas;
+
+-- 31. ¿Cuál es el total de pedidos aceptados por Bill Adams?
+select repventas.nombre, count(pedidos.num_pedido) "NUMERO DE PEDIDOS"
+from repventas, pedidos
+where pedidos.rep = repventas.num_empl 
+and repventas.nombre like 'Bill Adams' 
+group by repventas.nombre;
+
+-- 32. ¿Cuántos vendedores superan su cuota?
+select distinct repventas.nombre, repventas.cuota
+from repventas
+where (ventas > cuota);
+
+-- 33. ¿Cuántos pedidos tienen un importe superior a 25.000?
+select distinct count(pedidos.importe)
+from pedidos
+where pedidos.importe > 25000
+
+-- 34. ¿Cuál es la fecha de pedido más antigua en la base de datos?
+select min(fecha_pedido) "FECHA MAS ANTIGUA"
+from pedidos;
+
+-- 35. Obtén el sueldo medio, el máximo sueldo y el mínimo sueldo
+-- de los empleados de la oficina de Nueva York. Emplea el formato adecuado para la salida para las
+-- cantidades numéricas.
+
+select repventas.nombre, avg(repventas.cuota) "sueldo medio", max(repventas.cuota) "máximo sueldo", min(repventas.cuota) "mínimo sueldo", oficinas.ciudad
+from oficinas,repventas
+where repventas.num_empl = oficinas.dir and oficinas.ciudad like 'New York';
+
+-- 36. Muestra la titulación de los vendedores en una columna alineando el resultado a la derecha, y en
+-- mayúsculas.
+select upper(titulo)
+from repventas;
+
+-- 37. Muestra el nombre y el apellido de los vendedores en dos columnas independientes.
+select substr(nombre,1, instr(nombre, ' ')) "NOMBRE", ltrim(substr(nombre, instr(nombre, ' '))) "APELLIDOS" from repventas;
+
+-- 38. Muestra el nombre completo de los vendedores en una columna y en otra diferente sólo el
+-- nombre.
+select nombre "NOMBRE COMPLETO", substr(nombre, 1, instr(nombre, ' ')) "NOMBRE" from repventas;
+
+-- 39. Muestra el nombre completo de los vendedores en una columna y en otra diferente sólo el
+-- apellido.
+select nombre "NOMBRE COMPLETO", substr(nombre, instr(nombre, ' ')) "APELLIDO" from repventas;
+
+-- 40. Muestra los nombres de los vendedores ordenados por su número de caracteres.
+select nombre
+from repventas
+order by length(nombre);
+
+-- 41. Muestra el nombre de los vendedores, su fecha de contratación y ésta formateada de la siguiente
+-- forma:
+-- “Contratado el XX de XXXX de XXXX".
+select nombre, to_char(contrato, ' "Contratado el " dd " de " month " de " yyyy ') "CONTRATO"
+from repventas;
+
+-- 42. Muestra los productos “bisagra” ordenados de mayor a menor precio.
+select descripcion, precio
+from productos
+where descripcion like '%Bisagra%'
+order by precio DESC;
+
+-- 43. Convierte la cadena '010223' a fecha y visualiza su nombre de mes en mayúsculas.
+select to_date('010221','ddmmyyy'), 'MONTH'
+from dual;
+
+--44  Muestra los vendedores que lleven más de 30 años trabajando.
+select num_empl, nombre, contrato, to_char (contrato, 'yyyy') 
+from repventas 
+where to_char(contrato, 'yyyy') < to_char(sysdate, 'yyyy') -30;
+
+--45 Muestre los vendedores de la oficina de Chicago que lleven más de 10 años trabajando y tienen un director a su cargo.
+select unique repventas.nombre "nombre", ((to_char(sysdate, 'yyyy')) - (to_char(repventas.contrato,'yyyy')))  "Años trabajado"
+from repventas, oficinas
+where to_char(repventas.contrato,'yyyy') < (to_char(sysdate, 'yyyy') -10)
+and repventas.director is not null
+and repventas.oficina_rep = (select oficinas.oficina from oficinas 
+where oficinas.ciudad like '%Chicago%');
+
+-- 46. Listar los identificadores de fabricante y de producto para los productos con precio superior a
+-- 2.000 o con pedido de importe superior a 30.000. Obtener también este listado sin productos
+-- duplicados.
+select distinct productos.id_fab, productos.id_producto, productos.precio,pedidos.importe
+from pedidos,productos
+where productos.id_producto = pedidos.producto 
+and (productos.precio > 2000) or (pedidos.importe > 30000);
+
+-- 47. Ordenar el resultado del apartado anterior por fabricante y número de producto.
+select distinct productos.id_fab, productos.id_producto, productos.precio,pedidos.importe
+from productos,pedidos
+where productos.id_producto = pedidos.producto and (productos.precio > 2000) or (pedidos.importe > 30000)
+order by productos.id_fab, productos.id_producto;
+
+-- 48. Listar las oficinas con ciudad, nombre y título de sus directores, que presenten un objetivo de
+-- ventas superior a 600.000.
+select distinct oficinas.ciudad, repventas.nombre, repventas.titulo, oficinas.objetivo
+from oficinas,repventas
+where repventas.num_empl = oficinas.dir
+and (oficinas.ventas + oficinas.ventas) > 6000000;
+
+-- 49. Listar todos los pedidos con importe superior a 25.000 incluyendo el nombre del vendedor que
+-- tomó el pedido y el nombre del cliente que lo solicitó.
+select clientes.empresa "NOMBRE DEL CLIENTE", repventas.nombre "NOMBRE DEL VENDEDOR",pedidos.importe
+from pedidos, repventas, clientes
+where clientes.num_clie = pedidos.clie and repventas.num_empl = clientes.rep_clie
+and (pedidos.importe > 25000);
+
+-- 50. Listar todos los pedidos con importe superior a 25.000 incluyendo el nombre del cliente que lo
+-- ordenó, el vendedor asociado a ese cliente y la ciudad donde está la oficina en la que el vendedor
+-- trabaja.
+select distinct productos.descripcion, pedidos.importe, clientes.empresa,repventas.nombre, oficinas.ciudad
+from productos,pedidos,clientes,repventas,oficinas
+where productos.id_producto = pedidos.producto and repventas.num_empl = clientes.rep_clie and repventas.num_empl = oficinas.dir
+and pedidos.importe > 25000;

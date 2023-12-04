@@ -1,0 +1,69 @@
+· Matemáticos: +, -, *, div (se utiliza div en lugar de la /), idiv (es la división entera), mod.
+• Comparación: =, !=, <, >, <=, >=, not().
+• Secuencia: union (I), intersect, except.
+• Redondeo: floor(), ceili
+
+Intersección
+//EMP_ROW[SALARIO>3000]
+intersect
+//EMP_ROW[SALARIO<4000]
+
+Unión
+//EMP_ROW[SALARIO>3000]
+union
+//EMP_ROW[SALARIO<4000]
+
+except
+//EMP_ROW[SALARIO>3000]
+except
+//EMP_ROW[SALARIO<4000]
+
+Funciones de agrupación: count(), min(), max(), avg(), sum().
+• Funciones de cadena: concat(), string-length(),starts-with(), ends-with(), substring(), upper-case(), lower-case(), string().
+• Uso general: distinct-values()
+
+Doble for:
+for $dep in /universidad/departamento
+for $pue in distinct-values($dep/empleado/puesto)
+let $cu:=count($dep/empleado[puesto=$pue])
+return <departamentos><depart>{data($dep/nombre)}</depart><puesto>{data($pue)}</puesto></departamentos>
+
+<HTML>
+<BODY>
+<ul>
+{
+for $emple in //nombre
+return <li>{$emple}</li>
+}
+</ul>
+</BODY>
+</HTML>
+
+<HTML>
+<BODY>
+<table>
+{
+for $dept in (//DEP_ROW)
+let $nodept:=$dept/DEPT_NO , $nomdep:=$dept/DNOMBRE
+for $emple in (//EMP_ROW[DEPT_NO=$nodept])
+let $empleado:=$emple/APELLIDO
+return <tr><td>{data($nodept)}</td><td>{data
+($nomdep)}</td></tr>
+}
+</table>
+</BODY>
+</HTML>
+
+for $dept in (//DEP_ROW)
+let $nodept:= $dept/DEPT_NO
+let $nomdep:= $dept/DNOMBRE
+let $emplecaro:=//EMP_ROW[SALARIO=max(//EMP_ROW[DEPT_NO=$nodept]/SALARIO) and DEPT_NO=$nodept]/APELLIDO
+return
+<res><dept>{data($nomdep)}</dept>
+<nodept>{data($nodept)}</nodept>
+<empleados>
+{for $apellido in $emplecaro
+return concat($apellido,' , ')
+}
+</empleados>
+</res>

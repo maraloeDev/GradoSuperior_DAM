@@ -1,0 +1,56 @@
+--Cursores update oracle
+
+	--2 estrategias
+		--1-  Declarar el cursor con la clausula for update (bloquea la tabla completa)
+declare
+    
+cursor	emple10 select * from emple for update;
+v_registro	emple10%rowtype
+v_salario	emple.salario%type --Almacena el salario del empleado
+    
+--Una vez abierto el cursor, se ejecuta la select
+begin
+    open emple10
+	fetch emple10 into registro;
+    while emple10%found
+    loop
+    dbms_output.put_line('Empleado', registro.emp_no,
+    					'Salario anterior', registro.salario);
+v_salario := registro.salario+1000;
+update emple
+    set salario = salario where current of emple10;
+ dbms_output.put_line('Salario despues de la subida ', salario);
+
+fetch emple10 into registro;
+end loop;
+
+close emple10;
+end;
+
+		-- 2- Usar la seudocolumna %ROWID (Solo vloquea la fila a bloquear)
+declare
+    
+cursor	emple10 is select emple.*,rowid from emple where emple.deptno=10;
+v_registro	emple10%rowtype
+v_salario	emple.salario%type --Almacena el salario del empleado
+    
+--Una vez abierto el cursor, se ejecuta la select
+begin
+    open emple10
+	fetch emple10 into registro;
+    while emple10%found
+    loop
+    dbms_output.put_line('Empleado', registro.emp_no,
+    					'Salario anterior', registro.salario);
+v_salario := registro.salario+1000;
+update emple
+    set salario = salario where rowid + registro.rowid;
+ dbms_output.put_line('Salario despues de la subida ', salario);
+
+fetch emple10 into registro;
+end loop;
+
+close emple10;
+end;
+
+--Actualizar el salario de los empleados del departamento 10 con una subida de 1000 €. Mostrando para cada empleado afectado el salario antes de la subida

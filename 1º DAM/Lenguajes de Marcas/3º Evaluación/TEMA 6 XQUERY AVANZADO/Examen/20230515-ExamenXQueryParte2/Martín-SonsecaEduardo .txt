@@ -1,0 +1,83 @@
+1. Listado de nombre de paciente y nombre de vacuna suministrada
+
+for $nombrePac in //paciente/nombre
+let $nombreVac := //vacuna/nombre
+let idVacPac := //paciente[@id]/nombre = [//vacuna[@id]/nombre]
+return $nombrePac
+
+2. Listado de ciudad y número de vacunas suministradas en cada ciudad (no cuáles han sido 
+suministradas). 1 pto
+
+for $ciudad in //paciente/ciudad
+for $vacuSuminis in count(//vacunas/unidades)
+return $ciudad, $vacuSuminis
+
+3. Cuál es el precio medio de todos los tipos de dosis de vacuna existente, es decir, precio 
+medio de las vacunas de dosis Simple y precio medio de las vacunas de dosis Doble. Pero 
+no des por sabido que hay Simple y Doble, podría haber Triple, Cuádruple…. 1,25 pto.
+
+4. Inserta en cada nodo de vacuna cuál es la media de edad de los paciente vacunados con la 
+misma. 1,5 pto
+
+for $vacunasMedia in //vacuna
+let $MediaEdad := avg(//paciente/edad)
+return update insert <media>{$MediaEdad}</media> into $vacunasMedia
+
+5. Elimina todas las vacunas cuya fecha de fin llega al año 2022 . 1,5pto.
+
+update delete //vacuna [contains(fin, '2022')]
+
+6. Listado de ciudad y todas los nombres de vacunas suministradas en esa ciudad: 2pto.
+Ej.:
+Valladolid, Pfizer, Moderna, Jansen
+Burgos, Moderna, Jansen
+…..
+
+<HTML>
+	<BODY>	
+for $ciudad in //paciente/ciudad
+for $nombreVac in //vacuna/nombre
+		<table border = '2px'>
+
+			  <tr>
+
+				<td>Ciudad</td>
+				<td>Nombre de la Vacuna</td>
+
+			</tr>
+			
+			<tr>
+				<td>{$ciudad}</td>
+				<td>{$nombreVac}</td>
+			</tr>
+		</table>
+	</BODY>
+</HTML>
+
+7. Listado en formato HTML con identificador de paciente, nombre, y responsable vacuna 
+inyectada. 2 pto.
+
+<HTML>
+	<BODY>	
+for $vacuna in //vacuna
+let $nombreResp := $vacuna/responsable
+let $ident := $vacuna[@id]
+let $nomPac := //paciente/nombre
+		<table border = '2px'>
+
+			  <tr>
+
+				<td>Identificador</td>
+				<td>Nombre del Paciente</td>
+				<td>responsable</td>
+
+			</tr>
+			
+			<tr>
+				<td>{$ident}</td>
+				<td>{$nomPac}</td>
+				<td>{$nombreResp}</td>
+			</tr>
+		</table>
+	</BODY>
+</HTML>

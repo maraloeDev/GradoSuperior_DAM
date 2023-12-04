@@ -1,0 +1,115 @@
+-- Problema 1 (4 ptos.- Mínimo: 2 ptos.) Lenguaje de definición de datos (DDL):
+-- Entrega: script sql con los diferentes apartados y en orden
+-- a) (2,5 ptos.) Escribe las instrucciones SQL necesarias para crear las tablas de la 2ª evaluación
+-- incluidas las restricciones
+
+CREATE TABLE EMPLEADO(
+    NSS CHAR(9) 			NOT NULL,
+    NOMBRE VARCHAR2(20) 	NOT NULL,
+    APELLIDOS VARCHAR2(20) 	NOT NULL,
+    FECHA_NAC DATE,
+    DIRECCION VARCHAR2(30),
+    SEXO CHAR(1),
+    SALARIO NUMBER(6,2) 	NOT NULL,
+    COD_DEP CHAR(3),
+    CONSTRAINT	PK1	PRIMARY KEY	(NSS)
+);
+
+CREATE TABLE DEPARTAMENTO(
+    COD_DEP CHAR(3) NOT NULL,
+    NOMBRE_DEP VARCHAR2(30),
+    NSS_GERENTE CHAR(9),
+    CONSTRAINT	PK2	PRIMARY KEY	(COD_DEP)
+);
+
+CREATE TABLE PROYECTO(
+    COD_PROY INTEGER 			NOT NULL,
+    NOMBRE_PROY VARCHAR2(30)	 NOT NULL,
+    LUGAR VARCHAR2(20),
+    COD_DEP CHAR(3),
+    CONSTRAINT	PK3	PRIMARY KEY	(COD_PROY)
+);
+
+CREATE TABLE TRABAJA_EN(
+    NSS CHAR(9) NOT NULL,
+    COD_PROY INTEGER NOT NULL,
+    HORAS NUMBER(4,1),
+    CONSTRAINT	PK4	PRIMARY KEY	(NSS,COD_PROY)
+    );
+
+ALTER TABLE EMPLEADO
+ADD CONSTRAINT FK1_COD_DEP 	FOREIGN KEY (COD_DEP) REFERENCES EMPLEADO(NSS);
+    
+ALTER TABLE DEPARTAMENTO
+ADD CONSTRAINT FK2_NSS_GERENTE	FOREIGN KEY	(NSS_GERENTE) REFERENCES DEPARTAMENTO(COD_DEP);
+
+ALTER TABLE PROYECTO
+ADD CONSTRAINT FK3_COD_DEP FOREIGN KEY (COD_PROY) REFERENCES PROYECTO(COD_PROY);
+
+ALTER TABLE TRABAJA_EN
+ADD CONSTRAINT FK4_NSS_COD_PROY FOREIGN KEY(NSS,COD_PROY) REFERENCES TRABAJA_EN(NSS,COD_PROY);
+
+DROP TABLE EMPLEADO;
+DROP TABLE DEPARTAMENTO;
+DROP TABLE PROYECTO;
+DROP TABLE TRABAJA_EN;
+
+
+-- b) Añade las siguientes restricciones a las tablas creadas anteriormente:
+-- • (0,25 ptos.) Modifica la columna NOMBRE_PROY de la tabla PROYECTO para que pueda
+-- almacenar cadenas de como máximo 60 caracteres.
+alter table PROYECTO
+modify(
+    NOMBRE_PROY	VARCHAR2(60)
+);
+-- • (0,25 ptos.) La columna SEXO de la tabla EMPLEADO sólo pueda almacenar los valores ‘H’ o
+-- ‘M’.
+alter table EMPLEADO
+add constraint	CHECKsxo	CHECK(SEXO in('H', 'M'));
+-- • (0,25 ptos.) La columna SALARIO de la tabla EMPLEADO sólo puede almacenar valores
+-- positivos.
+alter table EMPLEADO
+add constraint	SalarioPositivo	CHECK(SALARIO > 0);
+
+-- c) (0,25 ptos.) Indexa la tabla EMPLEADOS por la columna NOMBRE. A continuación, muestra los índices
+-- de las tablas.
+create   index nssEmpleados
+on EMPLEADO(NOMBRE);
+
+select INDEX_NAME, TABLE_NAME 
+from user_indexes 
+where INDEX_NAME 
+like 'NSSEMPLEADOS';
+-- d) (0,25 ptos.) Muestra el tablespace en el que se han creado por defecto las tablas.
+select TABLE_NAME,TABLESPACE_NAME  from user_tables
+-- e) (0,25 ptos.) Muestra las restricciones creadas en las tablas.
+select distinct TABLE_NAME, CONSTRAINT_NAME 
+from user_constraints 
+where TABLE_NAME  LIKE 'EMPLEADO' OR
+	  TABLE_NAME  LIKE 'DEPARTAMENTO' OR
+      TABLE_NAME  LIKE 'PROYECTO' OR
+      TABLE_NAME  LIKE 'TRABAJA_EN';
+
+a) (2,5 ptos.) Realiza una función que muestre el nombre de los empleados del departamento
+cuyo código es recibido como parámetro. Además la function devolverá el nº de empleados
+implicados.
+
+CREATE OR REPLACE FUNCTION obtener_empleados_por_departamento(p_codigo_departamento IN NUMBER)
+  RETURN NUMBER
+IS
+  v_nombre_empleados VARCHAR2(100);
+  v_numero_empleados NUMBER := 0;
+BEGIN
+  -- Concatenamos los nombres de los empleados del departamento
+  FOR emp IN (SELECT nombre FROM empleados WHERE codigo_departamento = p_codigo_departamento) LOOP
+    v_nombre_empleados := v_nombre_empleados || emp.nombre || ', ';
+    v_numero_empleados := v_numero_empleados + 1;
+  END LOOP;
+
+
+  DBMS_OUTPUT.PUT_LINE('Empleados del departamento ' || p_codigo_departamento || ':');
+  DBMS_OUTPUT.PUT_LINE(v_nombre_empleados);
+
+
+  RETURN v_numero_empleados;
+END;

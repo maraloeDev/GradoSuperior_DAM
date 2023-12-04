@@ -1,0 +1,42 @@
+<html>
+    <head>
+       
+        <!-- http://geneura.ugr.es/~victor/cursillos/javascript/js_document.html -->
+        <title>Identificando elementos </title>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            window.onload=function()
+            {
+                document.getElementById( "intro" ).innerHTML="<a href='http://google.es'>ir a google</a>"
+
+            }
+            function cambiarColor(color)
+            {
+                document.getElementById( "parrafo" ).style.color=color.value
+                document.getElementById("parrafo").onmouseover=function()
+                {
+                    //miVariableParrafo.style.color="black"
+                   alert("funcion cambiar color a negro asignada")
+                   document.getElementById("parrafo").style.color="black" //this.value
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h3 id="intro">Introducción</h3>
+        <select name="colores" id="colores"> <!-- onchange="cambiarcolor(this.value)"-->
+            <option value="red" onclick="cambiarColor(this)">Rojo</option>
+            <option value="yellow" onclick="cambiarColor(this)">Amarillo</option>
+            <option value="blue" onclick="cambiarColor(this)">Azul</option>
+        </select>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="parrafo" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, aspernatur officia possimus eligendi eos voluptatum cum, debitis a, illo praesentium molestias ullam sequi commodi eius dicta temporibus perspiciatis! Distinctio, voluptatem.</div>
+
+
+    </body>
+</html>

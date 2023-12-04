@@ -1,0 +1,103 @@
+EJERCICIO 3
+
+ (:1 Obtén por cada zona el número de productos que tiene.:)
+for $totalProduc in //produc/cod_zona
+let $totalP := (//produc[cod_zona = $totalProduc]) 
+return count($totalP)
+
+(:2 Obtén la denominación de los productos entres las etiquetas <zona10></zona10> si son del código de zona 10, <zona20></zona20> si son de la zona 20, <zona30></zona30> si son de la 30 y <zona40></zona40> si son de la 40.:)
+for $den in /productos/produc/denominacion
+let $zona:=distinct-values(/productos/produc[denominacion=$den]/cod_zona)
+return concat('<zona', $zona, '>', $den, '</zona', $zona, '>')
+
+(:3 Obtén por cada zona la denominación del o de los productos más caros
+
+for $max in distinct-values(//produc/cod_zona)
+let $preciomayor := max(//produc[cod_zona = $max]/precio)
+let $den := //produc[precio = $preciomayor and cod_zona=$max]/denominacion
+return concat("Prod. mas caro de la zona ",$max, ' es: ',$den,' cuesta: ',$preciomayor,'€')
+
+(:4 Obtén la denominación de los productos contenida entre las etiquetas <placa></placa> para los productos en
+cuya denominación aparece la palabra Placa Base, <memoria></memoria> para los que contienen a la palabra Memoria
+<micro></micro>, para los que contienen la palabra Micro y <otros></otros> para el resto de productos:)
+for $tipo in(//produc/denominacion)
+return if(//produc[contains($tipo, 'Placa Base')]/denominacion)
+ then <Placa>{data($tipo)}</Placa>
+ else if(//produc[contains($tipo, 'Memoria')]/denominacion)
+ then <Memoria>{data($tipo)}</Memoria>
+ else if(//produc[contains($tipo, 'Micro')]/denominacion)
+ then <Micro>{data($tipo)}</Micro>
+ else ( <Otros>{data($tipo)}</Otros>) 
+
+Utilizando el documento sucursales.xml. Realiza las siguientes consultas XQuery::)
+(:5 Devuelve el código de sucursal y el número de cuentas que tiene de tipo AHORRO y de tipo PENSIONES
+for $sucursal in //sucursales/sucursal
+let $codigo:=$sucursal/@codigo, $ahorro:=count($sucursal/cuenta[@tipo = "AHORRO"]), $pensiones:=count($sucursal/cuenta[@tipo = "PENSIONES"])
+return concat("Codigo: ", $codigo, " - Tipo ahorro: ", $ahorro, " - Tipo pensiones: ", $pensiones)
+
+
+(:6 Devuelve por cada sucursal el código de sucursal, el director, la población, la suma del total debe y la suma
+del total haber de sus cuentas:)
+
+for $sucursal in //sucursal
+let $poblacion:=$sucursal/poblacion, $saldodebe:=sum($sucursal/cuenta/saldodebe),
+	$saldohay:=sum($sucursal/cuenta/saldohaber)
+return concat("Sucursal: ", $sucursal/@codigo, " - Director: ", $sucursal/director, " - Saldodebe: ", $saldodebe, " - Saldohay: ", $saldohay)
+
+
+(:7 Devuelve el nombre de los directores, el código de sucursal y la población de las sucursales con más de 3 cuentas:)
+
+for $sucursal in //sucursal
+let $director:=$sucursal/director,$codigo:=$sucursal/@codigo ,$poblacion:=$sucursal/poblacion, $cuentas:=count($sucursal/cuenta)
+return if($cuentas  >3)
+then  <resultado> {$director}  {$poblacion} </resultado>
+
+
+
+(:8 Devuelve por cada sucursal, el código de sucursal y los datos de las cuentas con más saldo debe:)
+for $sucursal in //sucursal
+let $codigo:=$sucursal/@codigo, $saldomax:= max($sucursal/cuenta/saldodebe), $cuenta_max:=$sucursal/cuenta[saldodebe=$saldomax]
+return concat("Sucursal: ", $codigo, " - Nombre: ", $cuenta_max/nombre, " - Numero: ", $cuenta_max/numero, " - Saldohay: ",$cuenta_max/saldohaber,
+	" - Saldodebe: ", $cuenta_max/saldodebe)
+
+
+for $sucursal in //sucursal
+let $max := $sucursal/cuenta[saldodebe=max($sucursal/cuenta/saldodebe)]
+return 
+<sucursal>
+  <codigo>{data($sucursal/@codigo)}</codigo>
+  {$max}
+</sucursal>
+
+
+:)9 Devuelve la cuenta del tipo PENSIONES que ha hecho más aportación:)
+for $cuentaP in //cuenta[@tipo='PENSIONES']
+let $maxAp:=max(//cuenta[@tipo='PENSIONES']/aportacion)
+return if ($cuentaP/aportacion=$maxAp)
+	then $cuentaP
+else ()
+
+EJERCICIO4
+
+1 Obtén los datos denominación, precio y nombre de zona de cada producto, ordenado por nombre de zona
+For $produc in //produc
+let $denominacion := $produc/denominacion, $precio := $produc/precio, $zona:=$produc/cod_zona
+order by $produc/cod_zona
+return <produc>
+<denominacion>{data($denominacion)}</denominacion>
+<precio>{data($precio)}</precio>
+<zona>{data($zona)}</zona>
+</produc>
+
+2  Obtén por cada zona, el nombre de zona y el número de productos que tiene
+for $zona in distinct-values(//produc/cod_zona)
+let $num_produc := count(//produc)
+return <zona num_productos="{data($num_produc)}">{data($zona)}</zona>
+
+3 Obtén por cada zona, el nombre de la zona, su código y el nombre del producto con menos stock actual.:)
+For $zonas in distinct-values(//zona/cod_zona)
+let $nombre := //zona[cod_zona = $zonas]/nombre, $menor_stock := //produc[cod_zona = $zonas]/min(stock_actual)
+return <zona>{data($zonas)}
+<nombre>{data($nombre)}</nombre>
+<menor>{data($menor_stock)}</menor>
+</zona>

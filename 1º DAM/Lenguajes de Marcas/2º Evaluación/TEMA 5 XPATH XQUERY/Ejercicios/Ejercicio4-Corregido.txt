@@ -1,0 +1,44 @@
+Apartado 1.
+
+for $pro in //produc
+let $zona:=(//zona[$pro/cod_zona=cod_zona])
+order by $zona/nombre
+return
+concat($zona/nombre,' Producto: ',$pro/denominacion,',precio: ',$pro/precio,'€')
+
+opción 2:
+for $pro in /productos/produc
+let $p:=$pro/denominacion,$pre:=$pro/precio,$zon:=$pro/cod_zona, $nom:=(/zonas/zona[cod_zona=$zon]/nombre)
+order by $nom
+return <datos>{$p,$pre,$nom}</datos>
+
+
+Apartado 2. 
+
+
+for $zona in //zona/cod_zona
+let $pro:=(//produc[cod_zona=$zona])
+let $countpro:=count($pro)
+let $nombrezona:=$zona/../nombre
+return
+concat($nombrezona,': ',$countpro)
+
+
+Apartado 3. 
+
+for $zona in //zona
+let $pro:=(//produc[cod_zona=$zona/cod_zona])
+let $minpro:=min($pro/stock_minimo)
+let $denom:=($pro[stock_minimo=$minpro])
+order by $minpro
+return
+<pro>
+ <NomZona>{data($zona/nombre)}</NomZona><codZona>{data($zona/cod_zona)}</codZona>{data($denom/denominacion)}<stockMin>{data($minpro)}</stockMin></pro>
+
+
+Apartado 4.
+
+for $zo in /zonas/zona
+	let $menosstock:=min(//productos/produc[cod_zona=$zo/cod_zona]/stock_actual),
+	$denomi:=//productos/produc[cod_zona=$zo/cod_zona and stock_actual=$menosstock]/denominacion
+	return <datos>{$zo/nombre,$zo/cod_zona,$denomi,$menosstock}</datos>

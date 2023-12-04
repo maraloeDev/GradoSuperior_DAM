@@ -1,0 +1,10 @@
+Butaca : Numero de fila y columna, y boolenano indicando si esta reservado o no
+Titular: No senecesita herencias!!!, y cuando es nombre completo añadir nombre y apellidos
+Patio : Solo una matriz ,y atributos siempre privados, y quitar lo estatico
+Reserva : No hereda de nada y poner los atributos privados,  y tener lista de las butacas reservadas,
+ y quitar atributos estaticos innecesarios, quitar interfaz grafica, y todo por consola
+            
+                 En la reserva automatica, no tiene que ser aleatorio
+                 La reserva auto, directa, confirmacion No leen desde el teclado, se pasan los datos por parametro, y mejorar algoritmo
+
+TeatroApp: llamara a los metodos de la clase reserva, pasando la información que se necesite por parametro

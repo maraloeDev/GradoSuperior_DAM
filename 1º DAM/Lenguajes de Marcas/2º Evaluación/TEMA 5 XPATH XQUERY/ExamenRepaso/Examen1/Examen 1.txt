@@ -1,0 +1,7 @@
+¿Cuántos libros han sido publicados en el año 2000 
+count(//book[starts-with(publish_date, '2000')]) // Contar los libros, cuyo año de publicacion es del 2000
+
+ Muestra un listado con el título del título del libro cuyo precio oscila entre 20 € y 50 €
+//book[number(price) > 20 and number(price) < 50]/title //Muestra los libros cuyo precio sea mayor que 20 Y 50, muestrame el titulo
+(:Sacar el nombre y apellidos del autor del libro que tenga TCP:)
+//book[contains(title, 'XML')]/author

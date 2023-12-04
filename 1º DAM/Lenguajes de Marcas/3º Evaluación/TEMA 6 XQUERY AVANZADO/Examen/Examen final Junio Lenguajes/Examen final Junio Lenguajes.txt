@@ -1,0 +1,37 @@
+Ejercicio 3a. (0,55 puntos)
+Muestra en formato tabla HTML el título y el número de autores que tiene cada título
+. Dos columnas.
+
+<HTML>
+<BODY>
+<TABLE BORDER='2px'>
+	<TR>
+		<TD>Titulo</TD>
+		<TD>Número de autores</TD>
+	</TR>
+{for $libro in //book
+let $NombreTitulo := $libro/title
+let $NAutores := count($libro/author)
+return <TR>
+		<TD>{data($NombreTitulo)}</TD>
+		<TD>{data($NAutores)}</TD>
+</TR>}
+</TABLE>
+</BODY>
+</HTML>
+
+Ejercicio 3b. (0.55 puntos)
+Incrementa el precio de aquellos que son de la categoría WEB un 10%
+for $categorias in //book[@category="WEB"]
+let $precios := $categorias/price
+return 
+update value $categorias/price with $precios + 0.10
+
+Ejercicio 3c. (0.55 puntos)
+Mostrar en un único listado todos los autores, eliminando los que se repiten y
+ordenados por el número de caracteres que tiene cada autor.
+
+for $autores in //book/author
+let $sinRepetir :=distinct-values ($autores)
+order by $autores
+return $sinRepetir

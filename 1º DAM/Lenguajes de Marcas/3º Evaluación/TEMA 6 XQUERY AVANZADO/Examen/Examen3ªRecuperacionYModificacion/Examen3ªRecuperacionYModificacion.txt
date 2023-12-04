@@ -1,0 +1,83 @@
+RECUPERACION - (1,7 punto) 1.- Realiza con doble for un listado HTML en formato
+tabla de la denominación de los productos ordenado por todos los nombre de zona
+existente.
+<html>
+<body>
+    
+    <table>
+        <tr>
+            <td>Nombre</td>
+            <td>Denominacion</td>
+        </tr>
+{for $productos in //produc
+let $denom := $productos/denominacion
+for $zonasDenom in //zona
+let $NombreZonas := $zonasDenom/nombre
+order by $NombreZonas
+return <tr>
+            <td>{data($NombreZonas)}</td>
+            <td>{data($denom)}</td>
+        </tr>}
+    </table>
+</body>
+</html>
+
+(1,6 punto) 2.- Modifica el xml de productos insertando por cada producto una nueva
+etiqueta que sea stock_disponible que resulte de la resta del stock_actual menos el
+stock_minimo.
+
+for $modprod in //produc
+let $stock := number($modprod/stock_actual) - number($modprod/stock_minimo)
+return update insert <stock_disponible>{$stock}</stock_disponible> into $modprod
+
+(1,3 punto) 3.- Incrementa 5 euros el precio de cada uno de los productos.
+for $productos in //produc
+let $incremento := $productos/precio
+return update value $incremento with $incremento + 5
+
+(1,3 punto) 4.- Elimina todos los productos que se venden en la zona de Andalucía
+for $zon in distinct-values(//zona[nombre='Andalucía']/cod_zona)
+for $prods in //produc[cod_zona=$zon]
+return  update delete $prods
+
+(1,3 punto) 5.- Cambia el nombre de la etiqueta cod_zona en productos por zona.
+update rename //cod_zona as 'zona'
+
+RECUPERACION - (1,5 punto) 6.- Mostrar la denominación y el precio del producto más
+caro por cada una de las zonas existentes.
+
+for $denominacion in //produc
+let $nombredeno := $denominacion/denominacion
+let $zonaCara :=  max($denominacion/precio)
+return concat($nombredeno, ' , ', $zonaCara)
+
+(1,3 punto) 7.- Cambia este nodo:
+<produc>
+<cod_prod>1010</cod_prod>
+<denominacion>Placa Base MSI G41M-P26</denominacion>
+<precio>50</precio>
+<stock_actual>10</stock_actual>
+<stock_minimo>3</stock_minimo>
+<cod_zona>10</cod_zona>
+</produc>
+Por este otro:
+<produc>
+<cod_prod>1010</cod_prod>
+<denominacion>Placa Base G41M-P260</denominacion>
+<precio>55</precio>
+<stock_actual>20</stock_actual>
+<stock_minimo>4</stock_minimo>
+<cod_zona>10</cod_zona>
+</produc>
+
+update replace //produc[cod_prod= '1010']
+
+with
+<produc>
+<cod_prod>1010</cod_prod>
+<denominacion>Placa Base G41M-P260</denominacion>
+<precio>55</precio>
+<stock_actual>20</stock_actual>
+<stock_minimo>4</stock_minimo>
+<cod_zona>10</cod_zona>
+</produc>

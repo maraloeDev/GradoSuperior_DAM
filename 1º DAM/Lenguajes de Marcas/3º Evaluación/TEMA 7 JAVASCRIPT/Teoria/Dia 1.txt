@@ -1,0 +1,4 @@
+Cliente Lo ejecuta JavaScript, es el navegador el que ejecuta todo
+Servidor ejecuta PHP, que ejecuta PHP, que es el que lo interpreta
+
+Que es el DOM (Document Object Model) Es una representación de las etiquetas HTML

@@ -1,0 +1,74 @@
+ROLES --> Create role 
+Se utiliza la misma instruccion grant para privilegios de sistema y para privilegios sobre objetos 
+A la hora de asignarlo en vez de el privilegio se le asigna el rol. 
+Asigna o retirar privilegios a usuarios, roles. 
+select * from SESSION_ROLES; roles activos para el usuario
+select * from USER_ROLE_PRIVS;  roles actualmente activos en la sesión 
+select * from SESSION_ROLES;
+select * from USER_ROLE_PRIVS;
+-------------------------------------------------------------------------------------------------
+desc scott.dept:
+desc scott.emp;
+--Creamos el usuario DAM (Al crear el usuario no le estamos dando acceso)
+CREATE USER dam IDENTIFIED BY dam;
+--Creamos el rol de acceso
+create role rol_acceso;
+--Configuramos el rol con priviliegios (rol connect permite a un usario autenticarse en la nube)
+grant create session to rol_acceso; -- Privilegio de sistema para conectarse a Oracle
+grant connect to rol_acceso;
+--Privilegios pobre objetos
+grant select, insert, delete on scott.emp to rol_acceso;
+grant update(empl.salm empl.comm) on scott.emp to rol_acceso;
+grant select, insert, delete on scott.dept to rol_acceso;
+--
+revoke role connet from rol_acceso;
+--Asignamos el rol al usuario DAM
+grant rol_acceso to dam;
+-------------------------------------------------------------------------------------------------
+Default role --> Solo se puede asignar posteriormente a la creaccion del rol, no a la hora de crear el rol. 
+--Asigna el rol creado como rol por defecto al usuario SMR
+create user smr IDENTIFIED by SMR;
+alter user smr default role rol_acceso;
+Perfiles :
+Un perfil es un conjunto de limitaciones de recursos sobre la base de datos que puede asignarse a un usuario.
+Pueden limitarse los siguientes recursos:
+- Tiempo de CPU por llamada y/o sesión.
+- Número de lecturas lógicas por llamada y/o sesión
+- Número de sesiones abiertas simultáneamente por un usuario.
+- Tiempo de inactividad por sesión.
+- Duración total de la sesión.
+- Cantidad de memoria privada en la SGA. 
+Los perfiles también pueden utilizarse para activar una política de gestión
+de las contraseñas.
+ Se pueden gestionar las siguientes funcionalidades:
+- Bloqueo de cuenta (y duración de bloqueo) si se sobrepasa un número de intentos
+de conexión fallidos.
+- Duración de la vida de las contraseñas (eventualmente, con un periodo de gracia).
+- No reutilización de una contraseña antes de un cierto tiempo o antes de un cierto
+número de cambios.
+- Complejidad de la contraseña
+El perfil DEFAULT se asigna por defecto a los usuarios.
+No tiene límites para los recursos y pero si para las contraseñas 
+CREATE PROFILE nombre_perfil LIMIT
+[ SESSIONS_PER_USER { valor | UNLIMITED | DEFAULT } ] --> Numero de sesiones activas por defecto(2,3...)
+[ CPU_PER_SESSION { valor | UNLIMITED | DEFAULT } ] 
+[ CPU_PER_CALL { valor | UNLIMITED | DEFAULT } ] 
+[ CONNECT_TIME { valor | UNLIMITED | DEFAULT } ] --> Tiempo de conexion 
+[ IDLE_TIME { valor | UNLIMITED | DEFAULT } ] --> Tiempo de inactividad 
+[ LOGICAL_READS_PER_SESSION { valor | UNLIMITED | DEFAULT } ] --> Numero de bloques de lectura
+[ LOGICAL_READS_PER_CALL { valor | UNLIMITED | DEFAULT } ]
+[ COMPOSITE_LIMIT { valor | UNLIMITED | DEFAULT } ] --> Promedio de diferentes parametros de CPU y numeros de bloques
+[ PRIVATE_SGA { valor [K|M] | UNLIMITED | DEFAULT } ] --> Cantidad de memoria que puede usuar el usuario. 
+--SON LAS CLAUSULAS PARA LA POLITICA DE CONTRASEÑAS
+[ FAILED_LOGIN_ATTEMPTS { valor | UNLIMITED | DEFAULT } ] --> Numero maximo de intentos erroneos de contraseña al iniciar sesion
+[ PASSWORD_LIFE_TIME { valor | UNLIMITED | DEFAULT } ] --> Tiempo de vida
+[ PASSWORD_REUSE_TIME { valor | UNLIMITED | DEFAULT } ] --> Cuantas veces queremos que tengan en cuenta las contraseñas anteriores almacenadas.
+[ PASSWORD_REUSE_MAX { valor | UNLIMITED | DEFAULT } ]
+[ PASSWORD_LOCK_TIME { valor | UNLIMITED | DEFAULT } ] --> Tiempo de bloqueo
+[ PASSWORD_GRACE_TIME { valor | UNLIMITED | DEFAULT } ] --> Tiempo de gracia
+[ PASSWORD_VERIFY_FUNCTION { nombre_funcion | NULL | DEFAULT } ] ; Verificar si la contraseña cumple con los requisitos. 
+Activación de la limitación de recursos
+Por defecto, el control de la limitación de los recursos no está activo (sí el de las contraseñas).
+Para activarlo, es necesario ejecutar la siguiente orden:
+ALTER SYSTEM SET RESOURCE_LIMIT = TRUE 
+

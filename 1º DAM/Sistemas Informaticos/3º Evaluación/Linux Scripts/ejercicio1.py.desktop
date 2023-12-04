@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Ejercicio uno
+Comment=Ejemplo de diálogo
+Exec="/home/alberto/proyectosPY/ejemplo1/ejemplo1.py"
+Icon=/home/alberto/Imágenes/dialog.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
+Name[es]=ejemplo1.py.desktop
