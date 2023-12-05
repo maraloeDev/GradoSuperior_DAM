@@ -1,0 +1,23 @@
+GETRONICS
+
+Multinacional con 14 oficinas
+trabajo de edificios inteligentes
+Analitica de datos, manejo de AWS (Ofrecen servicios de cloud propio)
+tienen analiitica de datos
+asistencia a personas mayores...
+hay certificaciones personales de la empresa
+Tecnologias: Java .NET, 
+Certificados de SCRUM, pruebas java, microsoft, oracle...
+Equipos de testing, diseño grafico...
+
+Servidor : Microservicios y Estandar JEE 
+BBDD : R y NR
+Integrado siempre en un equipo
+
+Probar cosas nuevas
+arquitectura en microservicios (Basados en GO+Docker)
+Se pude viajar
+ingles
+necesita talento Junior
+proyectos reales a titulo profesional, si hay buen trabajo hay contratación
+GetJoin es un programa en practicas para proporcionar experiencia
