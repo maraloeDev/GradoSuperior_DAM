@@ -1,2 +1,0 @@
-WinUI : https://learn.microsoft.com/es-es/windows/apps/winui/?authuser=0
-Guía de escritorio (WPF .NET) https://learn.microsoft.com/es-es/dotnet/desktop/wpf/overview/?view=netdesktop-7.0&authuser=0
