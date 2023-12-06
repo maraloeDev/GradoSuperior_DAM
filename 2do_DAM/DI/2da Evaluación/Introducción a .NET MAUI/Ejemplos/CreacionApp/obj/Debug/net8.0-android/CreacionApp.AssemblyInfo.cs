@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CreacionApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+761db481c6b9f58ad7afac4854897ad14d496949")]
 [assembly: System.Reflection.AssemblyProductAttribute("CreacionApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CreacionApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

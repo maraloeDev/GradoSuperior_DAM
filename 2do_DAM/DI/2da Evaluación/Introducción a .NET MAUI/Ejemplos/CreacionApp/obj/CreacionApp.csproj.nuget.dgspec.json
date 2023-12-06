@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maraloed\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj": {}
+    "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maraloed\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj": {
+    "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maraloed\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj",
+        "projectUniqueName": "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj",
         "projectName": "CreacionApp",
-        "projectPath": "C:\\Users\\maraloed\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj",
-        "packagesPath": "C:\\Users\\maraloed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maraloed\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\obj\\",
+        "projectPath": "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\CreacionApp.csproj",
+        "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\2da Evaluación\\Introducción a .NET MAUI\\Ejemplos\\CreacionApp\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Visual Studio 2022 Componentes\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\maraloed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -245,7 +245,7 @@
         "android-x86": {
           "#import": []
         },
-        "iossimulator-x64": {
+        "ios-arm64": {
           "#import": []
         },
         "maccatalyst-x64": {
