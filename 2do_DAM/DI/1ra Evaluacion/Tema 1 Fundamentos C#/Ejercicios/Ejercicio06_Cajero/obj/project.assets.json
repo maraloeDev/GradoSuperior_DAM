@@ -8,23 +8,23 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Eduardo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\marti\\.nuget\\packages\\": {},
+    "C:\\Visual Studio 2022 Componentes\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Eduardo\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\1ra Evaluacion\\Tema 1 Fundamentos C#\\C#\\Ejercicios\\Ejercicio06_Cajero\\Ejercicio06_Cajero.csproj",
+      "projectUniqueName": "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\1ra Evaluacion\\Tema 1 Fundamentos C#\\Ejercicios\\Ejercicio06_Cajero\\Ejercicio06_Cajero.csproj",
       "projectName": "Ejercicio06_Cajero",
-      "projectPath": "C:\\Users\\Eduardo\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\1ra Evaluacion\\Tema 1 Fundamentos C#\\C#\\Ejercicios\\Ejercicio06_Cajero\\Ejercicio06_Cajero.csproj",
-      "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Eduardo\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\1ra Evaluacion\\Tema 1 Fundamentos C#\\C#\\Ejercicios\\Ejercicio06_Cajero\\obj\\",
+      "projectPath": "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\1ra Evaluacion\\Tema 1 Fundamentos C#\\Ejercicios\\Ejercicio06_Cajero\\Ejercicio06_Cajero.csproj",
+      "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marti\\Desktop\\GradoSuperior_DAM\\2do_DAM\\DI\\1ra Evaluacion\\Tema 1 Fundamentos C#\\Ejercicios\\Ejercicio06_Cajero\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Visual Studio 2022 Componentes\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -70,7 +70,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
