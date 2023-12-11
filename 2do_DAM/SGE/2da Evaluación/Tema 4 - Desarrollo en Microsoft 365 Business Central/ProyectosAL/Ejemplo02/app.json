@@ -1,0 +1,28 @@
+{
+  "id": "5e0e0d76-74a6-44f3-b293-a77cbd5d58ef",
+  "name": "Ejemplo02",
+  "publisher": "GF-Eduardo",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "14.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "3.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
