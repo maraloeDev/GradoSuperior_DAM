@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_XAML", "GUI_XAML.csproj", "{A492EADE-4281-4070-A3F3-4A7AEEDB775E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A492EADE-4281-4070-A3F3-4A7AEEDB775E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A492EADE-4281-4070-A3F3-4A7AEEDB775E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A492EADE-4281-4070-A3F3-4A7AEEDB775E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A492EADE-4281-4070-A3F3-4A7AEEDB775E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A492EADE-4281-4070-A3F3-4A7AEEDB775E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A492EADE-4281-4070-A3F3-4A7AEEDB775E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB986A95-638B-4520-AD89-634654A8BB77}
+	EndGlobalSection
+EndGlobal
