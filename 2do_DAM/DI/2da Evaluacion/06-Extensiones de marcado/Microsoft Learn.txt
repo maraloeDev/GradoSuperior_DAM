@@ -1,0 +1,3 @@
+https://learn.microsoft.com/en-us/dotnet/maui/xaml/markup-extensions/consume?view=net-maui-7.0&authuser=0
+
+https://learn.microsoft.com/es-es/dotnet/maui/xaml/fundamentals/markup-extensions?view=net-maui-7.0&authuser=0
