@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4171c31d-1bdb-4556-84fb-440f29255a46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/DatoCompartido.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/DatoCompartido.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/Proceso.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/Proceso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ejercicio03_Grupos_Prioridades/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ejercicio03_Grupos_Prioridades/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,25 +36,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/maraloed/Desktop/GradoSuperior_DAM/2do_DAM/PSP/Tema1/Ejercicios/src/Examenes/Ejercicio2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marti/Desktop/GradoSuperior_DAM/2do_DAM/PSP/Tema1/Ejercicios&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\maraloed\Desktop\GradoSuperior_DAM\2do_DAM\PSP\Tema1\Ejercicios\src\Examenes\Ejercicio2" />
@@ -60,6 +64,26 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\marti\Desktop\GradoSuperior_DAM\2do_DAM\PSP\Tema1\Ejercicios\src\Examen1" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Ejercicio03_Grupos_Prioridades.App" />
+      <module name="Ejercicios" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Ejercicio03_Grupos_Prioridades.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -84,6 +108,11 @@
       <workItem from="1702372901879" duration="618000" />
       <workItem from="1702374135063" duration="20000" />
       <workItem from="1702375365599" duration="795000" />
+      <workItem from="1702919965387" duration="193000" />
+      <workItem from="1702920923183" duration="943000" />
+      <workItem from="1702922045396" duration="150000" />
+      <workItem from="1702922263784" duration="262000" />
+      <workItem from="1702922606636" duration="271000" />
     </task>
     <servers />
   </component>

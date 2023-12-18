@@ -19,7 +19,7 @@ public class App {
 			
 			
 			for (int i = 0; i < process; i++) {
-				if (i==0) {
+				if (i == 	0) {
 					
 					Proceso proceso1 = new Proceso("Proceso 0", Thread.MIN_PRIORITY, g1, contador);
 					proceso1.hilo.start();
