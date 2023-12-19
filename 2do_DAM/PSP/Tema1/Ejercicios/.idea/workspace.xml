@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4171c31d-1bdb-4556-84fb-440f29255a46" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/DatoCompartido.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/DatoCompartido.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/Proceso.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/Ejercicios/Ejercicio06_Wait_Notify/Proceso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ejercicio03_Grupos_Prioridades/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ejercicio03_Grupos_Prioridades/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +110,7 @@
       <workItem from="1702922045396" duration="150000" />
       <workItem from="1702922263784" duration="262000" />
       <workItem from="1702922606636" duration="271000" />
+      <workItem from="1703000687949" duration="1505000" />
     </task>
     <servers />
   </component>
