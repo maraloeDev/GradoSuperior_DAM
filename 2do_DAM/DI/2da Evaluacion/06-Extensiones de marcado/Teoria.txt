@@ -1,0 +1,3 @@
+Permiten establecer propiedades en objetos o valores a los que se hace referencia indirectamente desde otros orígenes. 
+Las extensiones de marcado XAML son importantes para compartir objetos y hacer referencia a constantes usadas en una aplicación,
+Pero encuentran su mayor utilidad en los enlaces de datos (Binding) y son imprescindibles en el patrón MVVM.

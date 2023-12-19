@@ -1,0 +1,8 @@
+Tal y como define Microsoft en su documentación .NET Multi-platform App UI (.NET MAUI) es un marco multiplataforma para crear aplicaciones móviles y de escritorio nativas con C# y XAML.
+Con .NET MAUI, se pueden desarrollar aplicaciones que funcionarán en Android, iOS, macOS y Windows desde una única base de código compartida.
+
+Es importante que tengas en cuenta los emuladores/dispositivos que vas a utilizar para las pruebas, para establecer en las propiedades del proyecto las plataformas destino adecuadas.
+
+    Memoria
+    Resolución
+    Sistema operativo (versión, API, …)

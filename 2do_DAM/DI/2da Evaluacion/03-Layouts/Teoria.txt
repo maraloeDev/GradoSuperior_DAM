@@ -1,0 +1,8 @@
+Los layouts MAUI de .NET se usan para crear controles de interfaz de usuario en estructuras visuales y cada 
+
+layout normalmente contiene varias vistas(views). Las clases de layouts suelen contener lógica para establecer la posición y el tamaño de los elementos secundarios.
+
+Los layouts básicos son: 
+SatckLayout, que distribuye los elementos horizontal o verticalmente, y Grid que los distribuye en filas y columnas. 
+Si la distribución de los elementos horizontal o verticalmente no variará, se recomienda el uso de 
+HorizontalSatckLayout o VerticalSatckLayout.

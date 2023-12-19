@@ -1,5 +1,0 @@
-.NET MAUI proporciona varias interfaces que permiten a los desarrolladores interactuar con almacenamiento de datos en la aplicación. 
-
-     IFileSystem. Esta interfaz proporciona métodos para interactuar con el sistema de archivos del dispositivo. Se puede utilizar para acceder y manipular archivos en el sistema de archivos local por lo que es útil para operaciones como leer y escribir archivos de configuración, almacenar imágenes, etc.
-    ISecureStorage. Esta interfaz proporciona métodos para almacenar y recuperar datos de manera segura y encriptada en un almacén de datos seguro, y es útil para almacenar información sensible, como tokens de autenticación, contraseñas u otros datos que deben ser protegidos.
-    IPreferences. Proporciona un almacén de datos clave-valor para persistir datos de configuración de la aplicación, preferencias del usuario y otros datos no críticos.

@@ -1,0 +1,3 @@
+Crea una aplicación simulando un LOGIN que recuerde el nombre del último usuario. Preferences
+Crea una aplicación que almacene en el sistema de archivos local del dispositivo (AppDataDirectory) un archivo .csv con nombres y usuarios. FileSystem 
+Crea una aplicación que almacene en un lugar seguro del dispositivo un archivo con las contraseñas de los usuarios. SecureStorage

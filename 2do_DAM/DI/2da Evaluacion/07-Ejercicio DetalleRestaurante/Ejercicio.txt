@@ -1,0 +1,2 @@
+    ejercicio 1: página única con datos asignados literalmente
+    ejercicio 2: página única con botones de navegación que permiten avanzar/retroceder en una colección de elementos
