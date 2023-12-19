@@ -21,9 +21,8 @@ public class Proceso implements Runnable {
     Thread hilo;
 
     public Proceso(String nombre, Contador contador, int prioridad) {
-        this.hilo = new Thread(this,nombre);
+        this.hilo = new Thread(this, nombre);
         this.contador=contador;
-
         hilo.setPriority(prioridad);
     }
 
