@@ -1,3 +1,5 @@
+package Ejemplo015_ConcurreciasJava.src;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Proceso implements Runnable{

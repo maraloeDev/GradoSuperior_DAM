@@ -1,3 +1,5 @@
+package Ejemplo016_ProductorConsumidor.src;
+
 public class Consumidor extends Thread {
 
     DatoConpartido datoConpartido;

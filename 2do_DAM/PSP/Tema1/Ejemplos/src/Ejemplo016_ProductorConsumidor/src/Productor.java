@@ -1,3 +1,5 @@
+package Ejemplo016_ProductorConsumidor.src;
+
 import java.util.Random;
 
 public class Productor extends Thread{
@@ -11,6 +13,7 @@ public class Productor extends Thread{
 
             random.nextInt();
             datoConpartido.producir(random.nextInt());
+            
         }
     }
 

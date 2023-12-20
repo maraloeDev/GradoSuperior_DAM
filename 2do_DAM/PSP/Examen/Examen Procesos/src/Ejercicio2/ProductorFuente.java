@@ -11,6 +11,7 @@ public class ProductorFuente implements Runnable {
     @Override
     public void run() {
 
+        // Mientras sea interrumpido, entonces se crea un numero aleatorio entre 1 y 10
         while (interrumpir) {
             int nAleatorio = random.nextInt(1, 10);
             try {
@@ -19,6 +20,7 @@ public class ProductorFuente implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            // Una vez que acabe el milisegundo, se establece la gota a true
             setGota(true);
         }
     }
@@ -37,6 +39,7 @@ public class ProductorFuente implements Runnable {
         this.random = random;
     }
 
+    // Los metodos de la gota, se sincronizan debido a que al final, es el dato que van a compartir el productor y el consumidor
     public synchronized boolean isGota() {
         return gota;
     }
@@ -57,6 +60,7 @@ public class ProductorFuente implements Runnable {
         return interrumpir;
     }
 
+    // Se cambia el valor de la variable, con este metodo
     public void setInterrumpir(boolean interrumpir) {
         this.interrumpir = interrumpir;
     }

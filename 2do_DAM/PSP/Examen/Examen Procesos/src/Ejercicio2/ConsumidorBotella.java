@@ -1,12 +1,15 @@
 package Ejercicio2;
 
 public class ConsumidorBotella implements Runnable {
+
+    // Se crea una variable productor para almacenarla en el consumidor
     private ProductorFuente productorFuente;
     private int liquidPacage;
 
     @Override
     public void run() {
 
+        // Mientras que no sea interrumpido, si tiene gota, suma al pacageLiquid 1 y la gota pasa a false
         while (!Thread.interrupted()) {
 
             if (productorFuente.isGota()) {
@@ -16,16 +19,18 @@ public class ConsumidorBotella implements Runnable {
             }
 
         }
+        // Cuando el hilo no sea interrumpido, se mostrara un mensaje con el numero de gotas
         System.out.println("He recogido " + liquidPacage + " gotas");
 
     }
 
+    // Se crea el hilo
     Thread hilo;
 
+    // Se crea el constructor con el nombre, y el productor, (el hilo se inicializa con el THIS (si no, no funciona) y el nombre
     public ConsumidorBotella(String nombre, ProductorFuente productorFuente) {
         this.hilo = new Thread(this, nombre);
         this.productorFuente = productorFuente;
-
     }
 
     public ProductorFuente getProductorFuente() {
