@@ -1,12 +1,13 @@
 package Ejercicio3;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Mensaje {
 
     private String mensaje;
     private String destinatario;
-    private ArrayList<String> mensajes = new ArrayList<>();
+    private List<String> mensajes = new ArrayList<>();
 
     public Mensaje(String mensaje) {
         this.mensaje = mensaje;
@@ -19,13 +20,16 @@ public class Mensaje {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return mensajes.get(0);
+        String aux=mensajes.get(0);
+        mensajes.remove(0);
+
+        return aux;
     }
 
     public synchronized void setMensaje(String mensaje) {
         this.mensaje = mensaje;
         mensajes.add(mensaje);
-        notify();
+
     }
 
     public String getDestinatario() {
