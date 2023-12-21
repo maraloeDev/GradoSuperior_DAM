@@ -15,7 +15,6 @@ public class App {
         productorFuente.getHilo().start();
 
         for (int i = 1; i <= 4; i++) {
-
             ConsumidorBotella consumidorBotella = new ConsumidorBotella("Botella " + i, productorFuente);
             consumidorBotella.getHilo().start();
             consumidorBotellas.add(consumidorBotella);
@@ -34,7 +33,7 @@ public class App {
 
         // Guardamos en una lista todos los consumidores para interrumpirlos cuando pase el tiempo (10 millis)
 
-        for ( ConsumidorBotella consumidor : consumidorBotellas){
+        for (ConsumidorBotella consumidor : consumidorBotellas){
             consumidor.getHilo().interrupt();
         }
     }

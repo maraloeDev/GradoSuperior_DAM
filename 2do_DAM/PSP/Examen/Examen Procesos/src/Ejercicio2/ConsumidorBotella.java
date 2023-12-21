@@ -3,8 +3,8 @@ package Ejercicio2;
 public class ConsumidorBotella implements Runnable {
 
     // Se crea una variable productor para almacenarla en el consumidor
-    private ProductorFuente productorFuente;
-    private int liquidPacage;
+    public ProductorFuente productorFuente;
+    public int liquidPacage;
 
     @Override
     public void run() {
@@ -15,9 +15,7 @@ public class ConsumidorBotella implements Runnable {
             if (productorFuente.isGota()) {
                 liquidPacage++;
                 productorFuente.setGota(false);
-
             }
-
         }
         // Cuando el hilo no sea interrumpido, se mostrara un mensaje con el numero de gotas
         System.out.println("He recogido " + liquidPacage + " gotas");

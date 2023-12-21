@@ -61,7 +61,7 @@ public class ProductorFuente implements Runnable {
     }
 
     // Se cambia el valor de la variable, con este metodo
-    public void setInterrumpir(boolean interrumpir) {
+    public void setInterrumpir(boolean interrumpir)  {
         this.interrumpir = interrumpir;
     }
 }
