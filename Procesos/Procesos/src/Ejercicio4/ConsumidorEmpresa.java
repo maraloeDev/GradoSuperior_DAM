@@ -32,7 +32,7 @@ public class ConsumidorEmpresa implements Runnable {
             } else {
 
                 System.out.println("Las piezas restantes son " + piezasRestantes);
-                int nAleatorio = random.nextInt(1500, 3000);
+                int nAleatorio = random.nextInt(3000);
 
                 try {
                     Thread.sleep(nAleatorio);

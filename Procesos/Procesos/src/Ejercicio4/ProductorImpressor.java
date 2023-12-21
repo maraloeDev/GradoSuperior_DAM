@@ -12,7 +12,7 @@ public class ProductorImpressor implements Runnable {
     @Override
     public void run() {
         while (!Thread.interrupted()) {
-            int nAleatorio = rndm.nextInt(200, 500);
+            int nAleatorio = rndm.nextInt(200,500);
 
             try {
                 Thread.sleep(nAleatorio);

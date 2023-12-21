@@ -18,8 +18,8 @@ public class ConsumidorBotella implements Runnable {
                 productorFuente.setGota(false);
             }
             }
-        }
         System.out.println("He recogido: " + contadorLiquido + " gotas ");
+        }
     }
 
     Thread hilo;

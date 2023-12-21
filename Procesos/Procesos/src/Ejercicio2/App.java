@@ -24,7 +24,6 @@ public class App {
             throw new RuntimeException(e);
         }
 
-        productorFuente.setInterrumpir(false);
 
 
         for (ConsumidorBotella consumidor : consumidorBotellas) {

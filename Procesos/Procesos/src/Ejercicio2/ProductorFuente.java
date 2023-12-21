@@ -2,17 +2,16 @@ package Ejercicio2;
 
 import java.util.Random;
 
-public class ProductorFuente implements Runnable {
+public class ProductorFuente extends Thread {
 
     Random random = new Random();
     boolean gota = false;
-    boolean interrumpir = true;
 
     @Override
     public void run() {
 
-        while (interrumpir) {
-            int nAleatorio = random.nextInt(1, 10);
+        while (isInterrupted()) {
+            int nAleatorio = random.nextInt(10);
             try {
                 Thread.sleep(nAleatorio);
             } catch (InterruptedException e) {
@@ -45,14 +44,6 @@ public class ProductorFuente implements Runnable {
     public synchronized void setGota(boolean gota) {
         this.gota = gota;
 
-    }
-
-    public boolean isInterrumpir() {
-        return interrumpir;
-    }
-
-    public void setInterrumpir(boolean interrumpir) {
-        this.interrumpir = interrumpir;
     }
 
     public Thread getHilo() {
