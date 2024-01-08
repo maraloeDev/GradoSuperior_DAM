@@ -12,7 +12,7 @@ page 50100 "Vehiculo List"
             repeater(GroupName)
             {
                 field(Model; Rec.Model) { ApplicationArea = All; }
-                field("Serial No."; Rec."Serial No.") { ApplicationArea = All; }
+                field("Serial No."; Rec."Serial No") { ApplicationArea = All; }
                 field(Description; Rec.Description) { ApplicationArea = All; }
                 field(Transmission; Rec.Transmission) { ApplicationArea = All; }
                 field("List Price"; Rec."List Price") { ApplicationArea = All; }

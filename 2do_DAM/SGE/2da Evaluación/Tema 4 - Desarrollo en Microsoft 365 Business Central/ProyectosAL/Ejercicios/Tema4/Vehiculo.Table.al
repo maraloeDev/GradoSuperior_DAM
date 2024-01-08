@@ -1,6 +1,5 @@
 table 50100 Vehiculo
 {
-
     DataClassification = ToBeClassified;
     Caption = 'Vehiculo';
 
@@ -11,14 +10,14 @@ table 50100 Vehiculo
         field(3; Description; Text[50]) { }
         field(4; Transmission; Option)
         {
-            OptionMembers = "Automatic=0, "4-speed", "5-speed";
+            OptionMembers = "Automatic=0","4-speed","5-speed";
         }
 
         field(5; "List Price"; Decimal) { }
         field(6; "Date of Manufacturing"; Date) { }
 
     }
-        {
+
 
     keys
     {
@@ -26,12 +25,6 @@ table 50100 Vehiculo
         {
             Clustered = true;
         }
-        key{key2; "Date of Manufacturing", Transmission) { }
-        {
-
-        }
+        key(key2; "Date of Manufacturing", Transmission) { }
     }
 }
-
-
-
