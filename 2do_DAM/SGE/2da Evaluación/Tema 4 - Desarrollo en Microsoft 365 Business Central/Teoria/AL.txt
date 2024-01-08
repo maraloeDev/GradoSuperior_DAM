@@ -1,3 +1,0 @@
-Al:Go, sirve para crear proyectos
-
-En el launch, la pagina 22 es la pagina del cliente
