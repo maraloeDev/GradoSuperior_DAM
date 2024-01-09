@@ -21,7 +21,7 @@ table 50100 Vehiculo
 
     keys
     {
-        key(pk; Model)
+        key(pk; Model, "Serial No")
         {
             Clustered = true;
         }
